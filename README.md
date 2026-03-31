@@ -115,41 +115,45 @@ Every feature you ever build is just a variation of these three steps.
 
 Codex is your AI coding assistant. You can use it in several ways — pick whichever feels most comfortable. You can use all of them; they all share the same OpenAI account.
 
-#### Option A — ChatGPT web app (easiest to start)
-Just go to `chatgpt.com` and start a conversation. Paste your code, describe your error, ask questions. No install needed.
+#### Option A — ChatGPT web app (free, no install)
+Go to `chatgpt.com` and start a conversation. Paste your code, describe your error, ask questions.
 
-**Best for:** asking "why does this code do X", explaining errors, brainstorming approaches.
+**Best for:** quick questions, explaining errors, brainstorming.
 
-**Limitation:** it can't directly read or edit files on your computer.
+**Important limitation — the web app is not deterministic.** This means the same question can get a different answer each time. When you ask it to write code, it might work perfectly on Monday and generate something subtly different on Wednesday. Don't copy code from the web app without understanding what it does — you won't be able to debug it if it breaks. Use it to *learn*, not to *build*.
+
+**Second limitation:** it can't read or edit files on your computer.
 
 ---
 
-#### Option B — VS Code extension (recommended for most beginners)
-Install the **GitHub Copilot** extension in VS Code. Sign in with your GitHub account (free trial available).
+#### Option B — Desktop app (recommended starting point)
+Download the ChatGPT desktop app for Mac or Windows from `openai.com/desktop`.
+
+This is the same as the web app but better: stays in your dock, you can attach files and screenshots directly, and keyboard shortcuts make it faster to use.
+
+**Best for:** asking questions while you're looking at code in VS Code side-by-side, attaching error screenshots, longer conversations without losing context.
+
+**Same non-determinism caveat as Option A applies** — treat it as a learning and thinking tool, not a code generator you paste from blindly.
+
+---
+
+#### Option C — VS Code extension
+Install **GitHub Copilot** in VS Code. Sign in with your GitHub account (free trial available).
 
 ```
 VS Code → Extensions (Ctrl+Shift+X) → search "GitHub Copilot" → Install
 ```
 
-Then open VS Code's Copilot Chat panel (`Ctrl+Shift+I` / `Cmd+Shift+I`) and ask questions about your open files.
+Open the Copilot Chat panel (`Ctrl+Shift+I` / `Cmd+Shift+I`) and ask questions about your open files.
 
-**Best for:** getting suggestions as you type, asking questions about the file you're looking at, explaining code inline.
+**Best for:** inline suggestions as you type, asking "what does this function do", explaining highlighted code without leaving your editor.
 
-**Tip:** You can also use the **Cursor** editor (a VS Code fork with deeper AI integration) — `cursor.com`.
-
----
-
-#### Option C — Codex desktop app
-OpenAI's desktop app for Mac/Windows. Download from `openai.com/desktop`.
-
-Works like the web app but lives on your desktop with better keyboard shortcuts and file attachment support.
-
-**Best for:** longer coding sessions, attaching files and screenshots to your conversation.
+**Tip:** **Cursor** (`cursor.com`) is a VS Code fork with deeper AI integration — worth trying once you're comfortable with VS Code.
 
 ---
 
 #### Option D — Codex CLI in the terminal (most powerful)
-Runs directly in your project folder. Can read your files, make edits, and run commands — all with your approval.
+Runs directly in your project folder. Can read your files, make edits, and run commands — all with your approval before anything happens.
 
 ```bash
 # Install (requires Node.js)
@@ -163,26 +167,25 @@ cd ~/Codebases/my-journal-app
 codex
 ```
 
-**Best for:** letting Codex make changes across multiple files, running tests, scaffolding features end-to-end.
+**Best for:** making changes across multiple files, running tests, scaffolding whole features end-to-end.
 
 **How it works:**
 - You describe what you want in plain English
-- Codex proposes changes or commands
-- You approve or reject each one before it runs
-- It reads your `CLAUDE.md` for project context automatically
+- Codex shows you the exact changes or commands it wants to run
+- You approve or reject each one — nothing happens without your say-so
+- It reads your `CLAUDE.md` automatically for project context
 
 ---
 
 **Which to start with?**
 
-| You want to... | Use |
+| Stage | Use |
 |---|---|
-| Ask questions, learn concepts | ChatGPT web (Option A) |
-| Get help while typing code | VS Code Copilot (Option B) |
-| Chat with files attached | Desktop app (Option C) |
-| Let AI make edits for you | Codex CLI (Option D) |
+| Day 1 — learning concepts, asking questions | Desktop app (Option B) |
+| Once you're writing code daily | Add VS Code Copilot (Option C) |
+| Once you can read and understand code | Graduate to Codex CLI (Option D) |
 
-Most beginners start with **A or B**, then graduate to **D** once they're comfortable reading code.
+Avoid building entirely from web/desktop AI output you don't understand. The goal is to use AI to *learn faster*, not to skip understanding the code you ship.
 
 ---
 
