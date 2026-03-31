@@ -649,15 +649,29 @@ Do these in order. Each stage maps to where you are in the guide.
 
 ### Before anything else -- start here if you know nothing
 
-These two courses are specifically designed for people with zero coding experience who want to build with AI. Do at least one before moving to Stage 0.
+**Step 1: Official OpenAI Academy -- Codex for Builders (free)**
+
+This is the official OpenAI training for Codex. Start here.
+
+| Resource | What it is | Time |
+|----------|-----------|------|
+| [Codex for Builders -- OpenAI Academy](https://academy.openai.com/public/resources/codex-for-builders) | The official overview: what Codex is, where to use it, how to get started | 20 min |
+| [Codex 102 Workshop](https://codex-102.vercel.app/preview) | Hands-on, task-based training walking through real development workflows with Codex | 1-2 hrs |
+| [Codex Interactive Demo](https://app.arcade.software/share/abDTLpR021CYRB4rETDH) | See the CLI, IDE integration, and code review in action before you install anything | 15 min |
+| [How OpenAI Uses Codex (PDF)](https://d2xo500swnpgl1.cloudfront.net/uploads/oaiacademy/-External-How-OpenAI-Uses-Codex-9f67ed43-34e8-4059-9960-e167b63ccf97-1754933207757.pdf) | Best-practice prompting guide with real workflow examples from inside OpenAI | 30 min |
+| [Codex Docs](https://developers.openai.com/codex) | Official reference: capabilities, API, guides | Reference |
+
+Do the Academy page, the demo, and the workshop in that order. Skip the PDF until you've used Codex a few times -- it'll make more sense then.
+
+**Step 2: If you want a broader foundation first (zero coding experience)**
 
 | Course | What it covers | Time | Cost |
 |--------|---------------|------|------|
-| [Replit -- AI Foundations: Master AI & Vibe Coding](https://learn.replit.com/) | Vibe coding, building apps without traditional programming, LLM basics -- runs inside Replit's browser IDE so nothing to install | ~30 min | Free |
-| [DeepLearning.AI -- AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/) | Python fundamentals with AI assistance, writing/testing/debugging code, building real AI applications -- taught by Andrew Ng, 35 video lessons | ~10 hrs | Free |
+| [Replit -- AI Foundations: Master AI & Vibe Coding](https://learn.replit.com/) | Vibe coding, building apps without traditional programming, LLM basics -- runs in browser, nothing to install | ~30 min | Free |
+| [DeepLearning.AI -- AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/) | Python fundamentals with AI assistance -- taught by Andrew Ng, 35 video lessons, zero experience needed | ~10 hrs | Free |
 
-**Replit first** if you want something quick and hands-on (30 min, runs in browser, no setup).
-**DeepLearning.AI** if you want a proper structured foundation before touching this repo (10 hrs, the best beginner AI Python course available).
+**Replit** if you want something quick (30 min, no setup, browser-only).
+**DeepLearning.AI** if you want the most thorough beginner foundation available (10 hrs, the best free AI Python course).
 
 ---
 
@@ -669,7 +683,8 @@ Goal: tools installed, Codex App running, first conversation done.
 |----------|---------------|------|
 | [ChatGPT desktop app](https://openai.com/desktop) | Download -- your chat/brainstorming tool | 10 min |
 | [Codex App -- GitHub releases](https://github.com/openai/codex/releases) | Download -- the actual coding agent | 10 min |
-| [OpenAI Help Centre -- Getting Started](https://help.openai.com/en/collections/3742473-chatgpt) | What ChatGPT and Codex can and can't do | 20 min |
+| [Using Codex with ChatGPT Plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan) | Step-by-step sign-in instructions from OpenAI | 10 min |
+| [Codex Changelog](https://help.openai.com/en/articles/11428266-codex-changelog) | Running log of new features -- bookmark this | Reference |
 | [CS50P -- Week 0 (Harvard, free)](https://cs50.harvard.edu/python/2022/weeks/0/) | First Python program, zero experience needed | 2 hrs |
 | [Python.org Tutorial -- Chapters 1-3](https://docs.python.org/3/tutorial/) | Variables, strings, numbers, functions | 1 hr |
 
