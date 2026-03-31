@@ -398,6 +398,40 @@
   <div class="cover-meta">Free · Uses ChatGPT Plus ($20/mo) · github.com/zuhur-contentful/beginner-codex-starter</div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════ HOW TO USE THIS GUIDE -->
+<div class="callout callout-tip">
+  <strong>How to open this guide on any computer</strong>
+  Download or clone the repo from GitHub → find the file called <code>guide.html</code> → double-click it. It opens in your browser like a webpage. To save it as a PDF: <strong>File → Print → Save as PDF</strong> (works in Chrome, Safari, Firefox, and Edge).
+</div>
+
+<!-- ══════════════════════════════════════════════════════ QUICK START -->
+<h2>Start here — Day 1 checklist</h2>
+
+<p>Before reading anything else, get the repo set up. This takes about 15 minutes.</p>
+
+<ol>
+  <li>Go to <a href="https://github.com/zuhur-contentful/beginner-codex-starter">github.com/zuhur-contentful/beginner-codex-starter</a></li>
+  <li>Click <strong>Use this template</strong> → <strong>Create a new repository</strong> → name it after what you want to build</li>
+  <li>Clone it to your computer: open Terminal, run <code>git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git</code></li>
+  <li>Open the folder in the <strong>Codex App</strong> (download from <a href="https://github.com/openai/codex/releases">github.com/openai/codex/releases</a>)</li>
+  <li>Edit <code>CLAUDE.md</code> — replace <code>PROJECT_DESCRIPTION</code> with one sentence about what you're building</li>
+  <li>In Terminal, inside your project folder: <code>cp .env.example .env</code> — then open <code>.env</code> and generate a <code>SECRET_KEY</code> with the command shown in the file</li>
+  <li>Create a virtual environment and install packages:
+    <pre><code>python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt</code></pre>
+  </li>
+  <li>Run the tests to confirm everything works: <code>python -m pytest tests/ -v</code> — you should see <code>1 passed</code></li>
+  <li>In the Codex App, type: <em>"I want to build [describe your idea]. Help me plan the first feature."</em></li>
+</ol>
+
+<div class="callout callout-warn">
+  <strong>Stuck on any of these steps?</strong>
+  Open the ChatGPT desktop app and say: <em>"I'm a complete beginner setting up a Python project on Mac. I'm on step [N] of a setup checklist and it isn't working. Here's what happened: [paste error]."</em> It will walk you through it.
+</div>
+
+<p>Once this is done, read the rest of the guide in order. Each stage tells you what to learn, what to build, and which Codex skills to use.</p>
+
 <!-- ══════════════════════════════════════════════════════ WHAT IS THIS -->
 <h2>What you're going to build</h2>
 

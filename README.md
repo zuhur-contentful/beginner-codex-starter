@@ -12,7 +12,8 @@ This repo gives you a working project template and a step-by-step guide to go fr
 
 | File | What it does |
 |------|--------------|
-| `README.md` | This guide -- read it top to bottom |
+| `guide.html` | **Start here.** The full visual guide. Double-click to open in your browser. File → Print → Save as PDF to keep a copy. |
+| `README.md` | Plain-text version of the guide -- readable on GitHub |
 | `SKILLS.md` | Your skill stack -- what to say to Codex at each stage of building |
 | `CLAUDE.md` | Context file Codex reads to understand your project -- edit it as you build |
 | `.env.example` | Template listing every secret your app needs -- copy to `.env`, never commit `.env` |
