@@ -109,7 +109,24 @@ You can also create your own skills. Add a new `.md` file to `.codex/skills/` wi
 
 ---
 
-### 6. Mentor — check progress and get your next assignment
+### 6. First Build — guided to-do app walkthrough
+
+**Trigger:** runs automatically when you're ready for your first real build (after Stage 0 is done)
+
+**Or say:** "let's build the to-do app" or "I'm ready to build"
+
+**What it does:**
+- Walks you through building a real to-do app from scratch, step by step
+- Uses every other skill in sequence: plan → build → learn → review → commit
+- Explains what's happening at every step before writing any code
+- Checks your understanding at each transition — asks you to explain things back
+- By the end you have a working app AND you know how to work with a coding agent
+
+**This is the most important skill in the repo.** It teaches you the back-and-forth of coding agent conversations on a real project, not just theory.
+
+---
+
+### 7. Mentor — check progress and get your next assignment
 
 **Trigger:** say "mentor" or "what should I do next" or "am I ready for the next stage"
 
@@ -149,6 +166,7 @@ You can also create your own skills. Add a new `.md` file to `.codex/skills/` wi
 | Fix something that's broken | "debug this" + paste the error |
 | Save your work | "commit this" |
 | Understand code | "explain this" |
+| Build your first app (guided) | "let's build the to-do app" — or it starts automatically |
 | Get your next assignment | "mentor" |
 | Save session memory | "save memory" (or just say goodbye — it runs automatically) |
 | Start the Codex App | Open the Codex App, select this folder |

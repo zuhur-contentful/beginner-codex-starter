@@ -2,7 +2,9 @@
 
 ## Session behaviour
 
-**On every session start:** read `.codex/memory/log.md` and `.codex/assignments.md`, then run the mentor skill — greet the learner with a one-sentence recap of last session and their next task. If the last log entry is from a previous day, ask them to recap what they worked on before continuing.
+**On every session start:** read `.codex/memory/log.md` and `.codex/assignments.md`, then:
+- If assignment 0.6 is complete and 1.4 is not complete: run the first-build skill — this is their first real build session, guide them through it fully
+- Otherwise: run the mentor skill — greet with a one-sentence recap of last session and their next task. If the last log entry is from a previous day, ask them to recap what they worked on before continuing.
 
 **On every session end:** run the memory skill — write a structured entry to `.codex/memory/log.md`. The learner may not remember to trigger this. After every completed feature or commit, remind them once: "Say 'save memory' or 'done for today' before you close so I remember where we got to." If they say goodbye, save automatically without asking.
 
