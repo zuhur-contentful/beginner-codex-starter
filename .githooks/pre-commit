@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Pre-commit hook: checks for accidentally committed secrets
+
+set -euo pipefail
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+RESET='\033[0m'
+
+# Check for .env file being committed
+if git diff --cached --name-only | grep -q "^\.env$"; then
+  echo -e "${RED}ERROR: You're trying to commit .env — this contains your secrets!${RESET}"
+  echo "Run: git restore --staged .env"
+  exit 1
+fi
+
+# Check for obvious secrets in staged code
+if git diff --cached | grep -iE "(api_key|api_secret|password|secret_key)\s*=\s*['\"][^'\"]{8,}" > /dev/null 2>&1; then
+  echo -e "${RED}WARNING: Possible hardcoded secret detected in staged changes.${RESET}"
+  echo "Check your code and move secrets to .env"
+  echo "If this is a false alarm, you can skip with: git commit --no-verify"
+  exit 1
+fi
+
+echo -e "${GREEN}✓ Pre-commit checks passed${RESET}"
