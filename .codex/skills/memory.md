@@ -3,9 +3,17 @@
 Run this automatically at the end of every session to log what happened.
 
 ## How to trigger
-Say: "save memory" or "end session" or "we're done for today"
+Say: "save memory" or "end session" or "we're done for today" or "goodbye" or "see you later"
 
-Also run this automatically whenever the user says goodbye, closes out, or finishes a feature.
+Also run this automatically whenever the user says goodbye or signals they are done.
+
+## Prompting the learner to save
+
+After every feature is completed or committed, say:
+"Good work. Before you close — say 'save memory' or just 'done for today' and I'll log this session so we pick up exactly here next time."
+
+If the learner has been working for more than 30 minutes without saving, remind them once:
+"Quick reminder — say 'save memory' before you close so I remember where we got to."
 
 ## What to do
 

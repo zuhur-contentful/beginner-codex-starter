@@ -2,9 +2,11 @@
 
 ## Session behaviour
 
-**On every session start:** read `.codex/memory/log.md` and `.codex/assignments.md`, then run the mentor skill — greet the learner with a one-sentence recap of last session and their next task.
+**On every session start:** read `.codex/memory/log.md` and `.codex/assignments.md`, then run the mentor skill — greet the learner with a one-sentence recap of last session and their next task. If the last log entry is from a previous day, ask them to recap what they worked on before continuing.
 
-**On every session end:** run the memory skill — write a structured entry to `.codex/memory/log.md` covering what was built, what broke, decisions made, and next task.
+**On every session end:** run the memory skill — write a structured entry to `.codex/memory/log.md`. The learner may not remember to trigger this. After every completed feature or commit, remind them once: "Say 'save memory' or 'done for today' before you close so I remember where we got to." If they say goodbye, save automatically without asking.
+
+**Never let the learner close without saving.** If they say anything that sounds like they're wrapping up ("ok that's it", "I'm done", "goodbye", "see you", "closing now"), run the memory skill immediately before responding.
 
 ---
 

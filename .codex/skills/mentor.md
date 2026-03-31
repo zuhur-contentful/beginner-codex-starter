@@ -10,10 +10,12 @@ Also run this automatically at the start of every new session (after reading mem
 ## What to do
 
 ### On session start (automatic)
-1. Read `.codex/memory/log.md` — find the most recent entry.
+1. Read `.codex/memory/log.md` — find the most recent entry and check its date.
 2. Read `.codex/assignments.md` — find the learner's current stage and incomplete tasks.
-3. Greet them with a one-sentence recap: "Last time we [what was built]. You were about to [next task]."
-4. Ask: "Ready to pick up where we left off, or do you want to recap anything first?"
+3. Check if the last log entry is from today:
+   - **If yes:** greet with a one-sentence recap and their next task. Ask: "Ready to pick up where we left off?"
+   - **If no (different date or only the seed entry exists):** say: "Welcome back. Before we start — last session I didn't save a memory entry. Can you tell me in one sentence what you worked on last time? I'll log it now so we don't lose it." Then write a brief catch-up entry to the log before continuing.
+4. After the catch-up (if needed), proceed with the normal session start.
 
 ### When triggered manually
 1. Read `.codex/memory/log.md` for full history.
