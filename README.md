@@ -65,11 +65,20 @@ Traditionally, learning to code meant months of tutorials before you could build
 
 ---
 
-### The tool you'll use: Codex
+### The tools you'll use
 
-Codex is OpenAI's AI coding assistant. It's made by the same company as ChatGPT. If you have a **ChatGPT Plus subscription ($20/month)**, you already have access to everything you need.
+OpenAI makes several things called "Codex." They're different products and it's confusing at first. Here's a plain-English breakdown:
 
-There are several ways to use Codex -- we'll cover all of them. But **start with the desktop app**.
+| Product | What it is | Good for |
+|---------|-----------|----------|
+| **ChatGPT desktop app** | Chat interface — lives in your dock | Brainstorming, questions, planning, learning |
+| **Codex App** | GUI coding agent — reads/edits your files, runs code | Actually building things |
+| **Codex CLI** | Same as the Codex App but in your terminal | Same as above, keyboard-first |
+| **ChatGPT web** (`chatgpt.com`) | Chat in a browser tab | Quick questions anywhere |
+
+You need a **ChatGPT Plus subscription ($20/month)** to use all of these.
+
+The **ChatGPT desktop app** and **Codex App** are two different downloads. Install both.
 
 ---
 
@@ -80,13 +89,11 @@ There are several ways to use Codex -- we'll cover all of them. But **start with
 Download the **ChatGPT desktop app** for Mac or Windows:
 `openai.com/desktop`
 
-**Do this before installing anything else.** Then use it to guide you through every other step.
-
-**Why the desktop app first?**
-- It lives in your dock -- always one click away
-- You can attach screenshots of errors directly
-- You can have long conversations without losing context
-- It's faster than switching browser tabs while you're working
+This is a **chat interface** -- not a coding agent. It can't edit your files. Use it for:
+- Brainstorming what to build
+- Asking questions while you're looking at code
+- Getting unstuck when something doesn't make sense
+- Walking you through installing everything else
 
 **How to use it to set up your machine:**
 
@@ -94,7 +101,7 @@ Open it and say:
 
 > "I'm a complete beginner. I want to learn to build web apps with Python. Can you walk me through installing everything I need on my Mac? I need Python 3.12, Git, VS Code, Node.js, and the GitHub CLI. Tell me one step at a time and wait for me to confirm each step before moving on."
 
-It will walk you through every single step. You don't need to follow the rest of this section manually -- just describe what you need and let it guide you.
+It will walk you through every step. You don't need to follow the rest of this section manually.
 
 **If you prefer to install manually**, here's what you need:
 
@@ -106,13 +113,36 @@ It will walk you through every single step. You don't need to follow the rest of
 | Node.js | Required for Codex CLI | `nodejs.org` |
 | GitHub CLI (`gh`) | Manage GitHub from the terminal | `brew install gh` (Mac) or `winget install GitHub.cli` (Windows) |
 
-**Verify everything is installed** (paste this into the desktop app if anything's wrong):
+**Verify everything is installed:**
 ```bash
 python3 --version   # should say Python 3.12.x
 git --version       # should say git version 2.x
 node --version      # should say v20.x or higher
 gh --version        # should say gh version 2.x
 ```
+
+### Step 1.1b -- Install the Codex App
+
+The **Codex App** is the actual coding agent. It can read your project files, make edits, run commands, and commit to Git -- all from a graphical window on your desktop. This is the tool that builds things.
+
+Download it from the GitHub releases page:
+`github.com/openai/codex/releases`
+
+Download the `.dmg` (Mac) or `.exe` (Windows), install it, and sign in with your OpenAI account.
+
+**How the Codex App works:**
+1. You open a project (point it at your project folder)
+2. You describe what you want in plain English in the chat panel
+3. It shows you exactly what it wants to change before doing anything
+4. You approve or reject each change -- nothing happens without your say-so
+5. You can see diffs, commit to Git, and push to GitHub all from inside the app
+
+Three modes (start with the default):
+- **Suggest** (default) -- proposes changes, you approve each one
+- **Auto Edit** -- applies file changes automatically, asks before running commands
+- **Full Auto** -- does everything automatically in a sandboxed folder
+
+> The Codex App reads your `CLAUDE.md` file automatically -- that's how it understands your project. Keep it updated as you build.
 
 ---
 
@@ -146,89 +176,83 @@ gh auth login
 
 ---
 
-### Step 1.4 -- Choose how you'll use Codex
+### Step 1.4 -- When to use each tool
 
-Codex works in four different ways. Start with just one -- the desktop app. Add the others as you grow.
+You now have two things installed: the ChatGPT desktop app (chat) and the Codex App (agent). Here's when to use what.
 
 ---
 
-#### Option A -- Desktop app (start here)
+#### ChatGPT desktop app -- your thinking partner
 
-You installed this in Step 1.1. **This is where most beginners should spend the majority of their time.**
+Use this whenever you're thinking, not building.
 
-**What it's great for:**
-- **Brainstorming** before you write a line of code: *"I want to build a habit tracker -- what features should I start with? What's the simplest version I could ship first?"*
-- **Planning your project**: *"Here's my idea. What are the main things I need to figure out? What order should I tackle them in?"*
-- **Learning concepts**: *"Explain what a database is like I've never heard of it"*
-- **Debugging**: screenshot your error, paste it in, describe what you were doing
+**Best for:**
+- **Brainstorming**: *"I want to build a habit tracker -- what features should I start with?"*
+- **Planning**: *"Here's my idea. What order should I tackle things in?"*
+- **Learning**: *"Explain what a database is like I've never heard of it"*
+- **Debugging help**: screenshot your error, paste it in, describe what you tried
 - **Understanding code**: paste anything and ask *"explain this line by line"*
-- **Quick questions**: *"What's the difference between a list and a dictionary in Python?"*
 
-Keep using this throughout the whole guide -- it's your thinking partner at every stage.
+**Important -- the ChatGPT desktop app is not deterministic.** The same question can get a different answer each time. This is fine for brainstorming and learning. It's a problem if you copy code you don't understand -- you won't be able to fix it when it breaks.
 
-**Important: the desktop app is not deterministic.**
-
-This means the same question can produce a different answer each time. If you ask it to write code on Monday and again on Wednesday, you might get slightly different code. Both might work -- or one might have a subtle bug.
-
-This is fine for brainstorming, planning, and learning. It's a problem if you copy code without understanding it, because you won't know how to fix it when something goes wrong.
-
-**Rule: never paste code into your project without understanding what each line does.** Ask the desktop app to explain it first.
+**Rule: never paste code into your project without understanding what each line does.** Ask the desktop app to explain it to you first.
 
 ---
 
-#### Option B -- ChatGPT web app (`chatgpt.com`)
+#### Codex App -- your builder
 
-Same AI as the desktop app, in a browser tab. Same rules apply. Good for quick questions when you're not at your desk.
+Use this when you're ready to actually write code. Open your project folder in the Codex App and describe what you want built.
+
+**Best for:**
+- Scaffolding a new feature: *"Add a search bar that filters journal entries by keyword"*
+- Fixing bugs: *"The form at /submit is throwing a 500 error -- here's the traceback"*
+- Running your tests and fixing failures
+- Committing and pushing to GitHub
+
+The Codex App reads your files, proposes changes, and waits for your approval. It also has Git built in -- you can review diffs, commit, and push without leaving the app.
 
 ---
 
-#### Option C -- VS Code extension (add this once you're writing code daily)
+#### ChatGPT web (`chatgpt.com`) -- same as the desktop app, in a browser
 
-Install the **ChatGPT extension** for VS Code -- made by OpenAI, same account you already have:
+Good for quick questions when you're not at your desk. Same non-determinism caveat applies.
+
+---
+
+#### VS Code extension -- AI inside your editor
+
+Install the **ChatGPT extension** for VS Code (made by OpenAI):
 ```
 VS Code -> Extensions (Ctrl+Shift+X) -> search "ChatGPT" -> install the one by OpenAI
 ```
 
-Once installed, you get a chat panel inside VS Code that can see the file you're currently editing. Ask it questions, paste errors, or ask it to explain highlighted code -- without switching to the desktop app.
+Gives you a chat panel that can see the file you're editing. Good for inline questions without switching windows.
 
-**What it adds:** AI help without leaving your editor. Great for "what does this function do" and "how do I add X to this file" while you're actively coding.
-
-> Tip: **Cursor** (`cursor.com`) is a VS Code fork with even deeper AI built in -- worth switching to once you're comfortable with VS Code basics.
+> Tip: **Cursor** (`cursor.com`) is a VS Code fork with deeper AI integration -- worth switching to once you're comfortable with VS Code basics.
 
 ---
 
-#### Option D -- Codex CLI in the terminal (graduate to this when you can read code)
-
-The most powerful option. Runs directly in your project folder, reads all your files, makes edits, and runs commands -- with your approval before anything happens.
+#### Codex CLI -- same as the Codex App, in your terminal
 
 ```bash
-# Install
 npm install -g @openai/codex
-
-# Sign in
 codex login
-
-# Run from inside your project
 cd ~/projects/my-journal-app
 codex
 ```
 
-Describe what you want in plain English:
-> *"Add a search bar to the journal page that filters entries by keyword"*
-
-Codex shows you exactly what it wants to change and asks for your approval. Nothing happens without your say-so. It reads your `CLAUDE.md` automatically for project context.
-
-**Why wait to use this?** Because if you can't read code yet, you can't review what Codex is proposing. You'd be approving changes you don't understand. Learn to read first, then use the CLI.
+Functionally identical to the Codex App but keyboard-driven. Use this if you prefer the terminal over a GUI -- otherwise the Codex App gives you the same power with a more visual interface.
 
 ---
 
-**The progression:**
+**When to use what:**
 
-| Where you are | Use |
-|--------------|-----|
-| Day 1 -- knowing nothing | Desktop app only |
-| Writing code in VS Code daily | Add GitHub Copilot |
-| Can read and understand code | Add Codex CLI |
+| Situation | Tool |
+|-----------|------|
+| Brainstorming, questions, planning, learning | ChatGPT desktop app or web |
+| Actually building -- creating files, running code, committing | Codex App |
+| Inline help while editing a file | VS Code ChatGPT extension |
+| Prefer terminal over GUI | Codex CLI instead of Codex App |
 
 ---
 
@@ -325,18 +349,22 @@ You should see the placeholder test pass. You're ready to build.
 
 ---
 
-### Step 2.6 -- Start building
+### Step 2.6 -- Start building with the Codex App
 
-With Codex CLI:
+Open the Codex App, click "Open Project", and select your `~/projects/my-first-app` folder.
+
+Then describe what you want:
+
+> *"I want to build a simple Flask web app. It should have one page where I can write a journal entry and save it to a SQLite database. Walk me through setting it up step by step, and explain each piece as you go."*
+
+The Codex App will propose files to create, show you the code before writing it, and ask for your approval at each step. Review each change -- don't just approve everything blindly. Reading what it's doing is how you learn.
+
+If you prefer the terminal, the Codex CLI does the same thing:
 ```bash
 cd ~/projects/my-first-app
 source venv/bin/activate
 codex
 ```
-
-Or with the desktop app (paste your `CLAUDE.md` first for context), then:
-
-> *"I want to build a simple Flask web app. It should have one page where I can write a journal entry and save it to a SQLite database. Walk me through setting it up step by step, and explain each piece as you go."*
 
 ---
 
