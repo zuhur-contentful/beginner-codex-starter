@@ -8,6 +8,30 @@ This repo gives you a working project template and a step-by-step guide to go fr
 
 ---
 
+## How to get started (do this first)
+
+**Step 1 — Download this repo to your computer**
+
+1. Click the green **Code** button at the top of this page
+2. Click **Download ZIP**
+3. Open your Downloads folder and unzip the file
+4. You now have a folder called `beginner-codex-starter` on your computer
+
+> Already have Git? Run: `git clone https://github.com/zuhur-contentful/beginner-codex-starter.git`
+
+**Step 2 — Open the guide**
+
+1. Open the folder you just downloaded
+2. Find the file called **`guide.html`**
+3. Double-click it — it opens in your browser like a normal webpage
+4. That guide has everything: what to install, what to learn, and how to build your first app
+
+> Want to save it as a PDF? In your browser: **File → Print → Save as PDF**
+
+That's it. The guide takes it from there.
+
+---
+
 ## What's in this repo
 
 | File | What it does |
