@@ -129,11 +129,18 @@ Go to `chatgpt.com` and start a conversation. Paste your code, describe your err
 #### Option B — Desktop app (recommended starting point)
 Download the ChatGPT desktop app for Mac or Windows from `openai.com/desktop`.
 
-This is the same as the web app but better: stays in your dock, you can attach files and screenshots directly, and keyboard shortcuts make it faster to use.
+**This is where most beginners should start.** It's the same AI as the web app but lives in your dock — no browser tab to lose, faster to open, and you can attach files and screenshots directly.
 
-**Best for:** asking questions while you're looking at code in VS Code side-by-side, attaching error screenshots, longer conversations without losing context.
+**This is the best tool for:**
+- **Brainstorming** — "I want to build a habit tracker. What features should I start with?"
+- **Learning concepts** — "Explain what a database is and why I need one"
+- **Asking questions** — "What's the difference between a list and a dictionary in Python?"
+- **Debugging** — take a screenshot of your error and paste it straight in
+- **Planning before you build** — "Here's my idea, what are the main things I need to figure out?"
 
-**Same non-determinism caveat as Option A applies** — treat it as a learning and thinking tool, not a code generator you paste from blindly.
+Use it like a very patient tutor who never makes you feel stupid for asking. Ask follow-up questions. Ask it to explain things differently. Ask why, not just what.
+
+**Same non-determinism caveat as Option A** — it's a thinking and learning tool. Don't copy code from it blindly; make sure you understand what each piece does.
 
 ---
 
@@ -181,11 +188,13 @@ codex
 
 | Stage | Use |
 |---|---|
-| Day 1 — learning concepts, asking questions | Desktop app (Option B) |
-| Once you're writing code daily | Add VS Code Copilot (Option C) |
+| Day 1 — brainstorming ideas, asking questions, planning | Desktop app (Option B) |
+| Once you're writing code in VS Code daily | Add GitHub Copilot (Option C) |
 | Once you can read and understand code | Graduate to Codex CLI (Option D) |
 
-Avoid building entirely from web/desktop AI output you don't understand. The goal is to use AI to *learn faster*, not to skip understanding the code you ship.
+The desktop app is not just a stepping stone — keep using it throughout. It's the best place to think through problems before jumping into code, and the best place to ask "wait, why does this work?" after Codex writes something.
+
+The goal is to use AI to *learn faster*, not to skip understanding the code you ship.
 
 ---
 
