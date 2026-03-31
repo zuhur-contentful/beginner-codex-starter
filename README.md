@@ -116,21 +116,19 @@ gh --version        # should say gh version 2.x
 
 ---
 
-### Step 1.2 -- Get your OpenAI API key
+### Step 1.2 -- Sign in to Codex
 
-You need two separate things from OpenAI:
+To **use Codex** (the desktop app, web app, VS Code extension, or CLI), you just sign in with your OpenAI account. That's it. No API key needed.
 
-1. **ChatGPT Plus subscription** -- gives you access to the desktop app and Codex CLI
-2. **OpenAI API key** -- lets your *app* call GPT programmatically (tiny cost for personal projects -- a few cents per day)
+```bash
+# If using the Codex CLI:
+codex login
+# Opens a browser -- sign in with your OpenAI account
+```
 
-**Get your API key:**
-1. Go to `platform.openai.com/api-keys`
-2. Sign in with the same account as your ChatGPT subscription
-3. Click "Create new secret key" -- give it a name like "my-first-project"
-4. **Copy it immediately** -- you only see it once
-5. Paste it somewhere safe (notes app, password manager) -- not in your code
+The desktop app and web app work the same way -- just sign in. Codex uses OAuth, the same way you sign into any app with Google.
 
-> **Never put your API key in your code.** Anyone who sees your code can use your key and you'll be charged. We cover how to store it safely in Step 2.4.
+> **API keys are a separate thing.** You only need one when you want the *app you build* to call AI programmatically -- for example, your journal app calling GPT to summarise entries. We cover that in Part 4, and we'll start with a free option.
 
 ---
 
@@ -371,7 +369,7 @@ venv\Scripts\activate       # Windows
 
 ### The .env pattern -- keeping secrets safe
 
-Your app needs API keys to work. These must never go into your code or onto GitHub.
+Once your app starts making AI calls, it needs an API key. That key must never go into your code or onto GitHub.
 
 ```
 .env.example   <- committed to GitHub (shows what's needed, no real values)
@@ -385,10 +383,10 @@ import os
 
 load_dotenv()  # reads .env into environment variables
 
-api_key = os.environ.get("OPENAI_API_KEY")
+api_key = os.environ.get("OPENROUTER_API_KEY")
 ```
 
-**Common symptom:** `KeyError: 'OPENAI_API_KEY'` or 401 errors from OpenAI
+**Common symptom:** `KeyError: 'OPENROUTER_API_KEY'` or 401 errors
 **Fix:** check `.env` exists, has the right key, and `load_dotenv()` is at the top of your file
 
 ---
@@ -476,7 +474,37 @@ Ask Codex: *"Write pytest tests for this function: [paste function]"*
 
 ## Part 4 -- Building AI Features
 
-### Calling the OpenAI API
+### Step 4.0 -- Get a free API key with OpenRouter
+
+When you use Codex to *build* your app, you sign in with OAuth -- no key needed.
+
+But when your *app itself* needs to call AI (for example, your journal app summarising your entries), it needs an API key. **Start with OpenRouter -- it's free.**
+
+**OpenRouter** is a service that gives you access to many AI models through one API key. The free tier includes several capable models with no credit card required.
+
+**Get your free OpenRouter key:**
+1. Go to `openrouter.ai`
+2. Sign up -- it's free, no credit card
+3. Go to Keys -> Create Key
+4. Copy it and put it in your `.env` file as `OPENROUTER_API_KEY`
+
+**When to upgrade to a paid key:**
+Once you've built something real and you're hitting the free tier limits, or you want access to the latest GPT-4o or Claude models, you can:
+- Add OpenAI credits at `platform.openai.com` (pay as you go, a few dollars gets you a long way)
+- Or keep using OpenRouter and add credits there (same models, one place)
+
+Don't pay for anything until you've actually built something and know you need it.
+
+---
+
+### Calling AI from your app (using OpenRouter)
+
+OpenRouter uses the same interface as the OpenAI SDK -- so the code looks identical, you just point it at a different URL.
+
+```bash
+pip install openai python-dotenv
+pip freeze > requirements.txt
+```
 
 ```python
 from openai import OpenAI
@@ -484,22 +512,27 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-def ask_gpt(question: str, context: str = "") -> str:
+# OpenRouter -- free tier, works with the openai SDK
+client = OpenAI(
+    api_key=os.environ.get("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1",
+)
+
+def ask_ai(question: str, context: str = "") -> str:
     prompt = question
     if context:
         prompt = f"Context:\n{context}\n\nQuestion: {question}"
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini",   # cheap and fast -- good for personal projects
+        model="mistralai/mistral-7b-instruct:free",  # free model on OpenRouter
         messages=[{"role": "user", "content": prompt}],
         max_tokens=1024,
     )
     return response.choices[0].message.content
 ```
 
-> **Model tip:** Use `gpt-4o-mini` while building -- it's fast and costs fractions of a cent per call. Switch to `gpt-4o` when you need better quality.
+> **When you're ready to upgrade:** change `base_url` to `https://api.openai.com/v1`, swap in your `OPENAI_API_KEY`, and use `model="gpt-4o-mini"`. The rest of the code stays identical.
 
 ---
 
@@ -509,7 +542,7 @@ def ask_gpt(question: str, context: str = "") -> str:
 ```python
 def summarise_entries(entries: list[str]) -> str:
     combined = "\n---\n".join(entries)
-    return ask_gpt(
+    return ask_ai(
         "Summarise these journal entries in 3 bullet points. Focus on recurring themes.",
         context=combined
     )
@@ -519,7 +552,7 @@ def summarise_entries(entries: list[str]) -> str:
 ```python
 def answer_question(question: str, entries: list[str]) -> str:
     context = "\n---\n".join(entries[-20:])  # last 20 entries only
-    return ask_gpt(question, context=context)
+    return ask_ai(question, context=context)
 ```
 
 **Extract structured data:**
@@ -527,7 +560,7 @@ def answer_question(question: str, entries: list[str]) -> str:
 import json
 
 def extract_mood(entry: str) -> dict:
-    response = ask_gpt(
+    response = ask_ai(
         """Analyse this journal entry. Return a JSON object with:
         - mood: one of positive / negative / neutral / mixed
         - energy: number from 1 to 10
@@ -679,7 +712,7 @@ Goal: build something you use every day. Deploy it. Write tests. Ship it.
 | Error | Cause | Fix |
 |-------|-------|-----|
 | `ModuleNotFoundError: No module named 'flask'` | Virtual env not active | `source venv/bin/activate` then `pip install flask` |
-| `KeyError: 'OPENAI_API_KEY'` | `.env` missing or `load_dotenv()` not called | `cp .env.example .env`, fill in values, add `load_dotenv()` at top of file |
+| `KeyError: 'OPENROUTER_API_KEY'` | `.env` missing or `load_dotenv()` not called | `cp .env.example .env`, fill in values, add `load_dotenv()` at top of file |
 | `Address already in use` | Port 5000 occupied | `lsof -i :5000` then `kill <PID>` |
 | `401 Unauthorized` from OpenAI | Wrong or expired API key | Regenerate at `platform.openai.com/api-keys` |
 | `429 Too Many Requests` | Hit rate limit | Wait; add `time.sleep(1)` between calls in loops |

@@ -27,4 +27,3 @@ jobs:
         env:
           ENVIRONMENT: test
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
