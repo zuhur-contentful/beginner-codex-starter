@@ -13,10 +13,12 @@ This repo gives you a working project template and a step-by-step guide to go fr
 | File | What it does |
 |------|--------------|
 | `README.md` | This guide -- read it top to bottom |
+| `SKILLS.md` | Your skill stack -- what to say to Codex at each stage of building |
 | `CLAUDE.md` | Context file Codex reads to understand your project -- edit it as you build |
 | `.env.example` | Template listing every secret your app needs -- copy to `.env`, never commit `.env` |
 | `requirements.txt` | Python packages your app needs -- install with `pip install -r requirements.txt` |
 | `tests/` | Automated tests -- run with `python -m pytest tests/ -v` |
+| `.codex/skills/` | Pre-built Codex skills: plan, review, debug, commit, learn |
 | `.githooks/pre-commit` | Runs before every commit and blocks you from accidentally committing secrets |
 | `.github/workflows/ci.yml` | Runs your tests automatically every time you push code to GitHub |
 | `.mcp.json` | Connects Codex to your GitHub repo so it can read your issues and PRs |
