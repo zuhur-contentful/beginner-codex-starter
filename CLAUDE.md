@@ -79,7 +79,7 @@ cp .env.example .env
 ```
 
 Required env vars (see `.env.example`):
-- `OPENAI_API_KEY` — your OpenAI API key (get it from platform.openai.com/api-keys)
+- `OPENROUTER_API_KEY` — free API key for AI calls in your app (get it from openrouter.ai — no credit card)
 - `SECRET_KEY` — a random string used to secure your app (generate with: `python3 -c "import secrets; print(secrets.token_hex(32))"`)
 
 ---

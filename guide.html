@@ -913,6 +913,96 @@
   <tr><td>Get more out of Codex in production</td><td>Codex mastery</td><td><a href="https://developers.openai.com/codex">Codex Developers Hub</a></td></tr>
 </table>
 
+<!-- ══════════════════════════════════════════════════════ REPO WALKTHROUGH -->
+<h2>Your starter repo — what's in it and how to use it</h2>
+
+<p>The template at <a href="https://github.com/zuhur-contentful/beginner-codex-starter">github.com/zuhur-contentful/beginner-codex-starter</a> is a ready-to-go project folder. Everything is pre-configured so you can open it in the Codex App on Day 1 and start building without fighting with setup.</p>
+
+<div class="callout callout-tip">
+  <strong>How to start</strong>
+  Go to the repo → click <strong>Use this template</strong> → <strong>Create a new repository</strong> → name it after what you're building → clone it to your computer → open the folder in the Codex App.
+</div>
+
+<h3>What's in the folder</h3>
+
+<table>
+  <tr><th>File / folder</th><th>What it is</th><th>When you touch it</th></tr>
+  <tr>
+    <td><code>CLAUDE.md</code></td>
+    <td>Project context file. Codex reads this automatically every session — it tells Codex what your stack is, where your files are, and your security rules.</td>
+    <td>Day 1: fill in <code>PROJECT_DESCRIPTION</code>, your repo URL, and your deploy URL. Update it as your project grows.</td>
+  </tr>
+  <tr>
+    <td><code>.env.example</code></td>
+    <td>A template listing every secret your app needs. Safe to commit — it has no real values.</td>
+    <td>Day 1: run <code>cp .env.example .env</code> and fill in your real values. Never commit the actual <code>.env</code>.</td>
+  </tr>
+  <tr>
+    <td><code>.env</code> (you create it)</td>
+    <td>Your real secrets — API keys, database URLs. Already in <code>.gitignore</code> so it can never be accidentally pushed.</td>
+    <td>Whenever you add a new secret: add the key to <code>.env.example</code> (blank value) and the real value to <code>.env</code>.</td>
+  </tr>
+  <tr>
+    <td><code>requirements.txt</code></td>
+    <td>The list of Python packages your app depends on. Anyone who clones your repo runs <code>pip install -r requirements.txt</code> to get the same environment.</td>
+    <td>After every <code>pip install &lt;package&gt;</code>: run <code>pip freeze &gt; requirements.txt</code> to save it.</td>
+  </tr>
+  <tr>
+    <td><code>tests/</code></td>
+    <td>Automated tests. Contains a placeholder test so CI passes from Day 1. Add your own as you build.</td>
+    <td>Stage 3: ask Codex to write tests for each feature before you deploy.</td>
+  </tr>
+  <tr>
+    <td><code>.github/workflows/ci.yml</code></td>
+    <td>GitHub Actions CI — automatically runs your tests on every push. Already configured and working.</td>
+    <td>You don't need to touch this to start. It just works. Read the GitHub Actions Quickstart in Stage 3 when you want to understand it.</td>
+  </tr>
+  <tr>
+    <td><code>.githooks/pre-commit</code></td>
+    <td>A script that checks for accidentally included secrets before every commit. Blocks the commit if it finds an API key pattern.</td>
+    <td>You don't need to configure this. It runs automatically when you use the <code>commit</code> skill.</td>
+  </tr>
+  <tr>
+    <td><code>.mcp.json</code></td>
+    <td>Configures MCP servers — tools that extend what Codex can do. Pre-configured with the GitHub MCP so Codex can see your issues and PRs.</td>
+    <td>Add your <code>GITHUB_PERSONAL_ACCESS_TOKEN</code> to <code>.env</code> to activate it.</td>
+  </tr>
+  <tr>
+    <td><code>.codex/skills/</code></td>
+    <td>Your five pre-built skills: <code>plan.md</code>, <code>review.md</code>, <code>debug.md</code>, <code>commit.md</code>, <code>learn.md</code>. Codex reads these automatically and follows their instructions when you say the trigger phrase.</td>
+    <td>Use them from Day 1. You can edit any skill file to change how Codex behaves.</td>
+  </tr>
+  <tr>
+    <td><code>guide.html</code></td>
+    <td>This document. Open in any browser. File → Print to save as PDF.</td>
+    <td>Reference whenever you need it. Keep it in your project folder.</td>
+  </tr>
+  <tr>
+    <td><code>SKILLS.md</code></td>
+    <td>Plain-text version of the skills guide — explains each skill and when to use it.</td>
+    <td>Quick reference while in the Codex App.</td>
+  </tr>
+</table>
+
+<h3>Day 1 checklist</h3>
+
+<ol>
+  <li>Click <strong>Use this template</strong> on GitHub → create your own repo</li>
+  <li>Clone it: <code>git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git</code></li>
+  <li>Open the folder in the Codex App</li>
+  <li>Edit <code>CLAUDE.md</code> — fill in <code>PROJECT_DESCRIPTION</code> and your repo URL</li>
+  <li>Run <code>cp .env.example .env</code> — fill in <code>SECRET_KEY</code> (generate it with the command in the file)</li>
+  <li>Create a virtual environment: <code>python3 -m venv venv &amp;&amp; source venv/bin/activate</code></li>
+  <li>Install packages: <code>pip install -r requirements.txt</code></li>
+  <li>Run the placeholder test to confirm everything works: <code>python -m pytest tests/ -v</code></li>
+  <li>In the Codex App, type: <em>"I want to build [describe your idea]. Help me plan the first feature."</em></li>
+</ol>
+
+<div class="callout callout-info">
+  <strong>CLAUDE.md is how Codex knows your project</strong>
+  Every time you open the Codex App, it reads <code>CLAUDE.md</code> first. This is why it doesn't ask you "what stack are you using?" every session — it already knows. Keep it updated as your project grows: add new routes, new dependencies, anything important. The more context it has, the better its suggestions will be.
+</div>
+
 <!-- ══════════════════════════════════════════════════════ SKILLS -->
 <h2>Your pre-built Codex skills</h2>
 
