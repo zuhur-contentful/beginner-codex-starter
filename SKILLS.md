@@ -109,6 +109,37 @@ You can also create your own skills. Add a new `.md` file to `.codex/skills/` wi
 
 ---
 
+### 6. Mentor — check progress and get your next assignment
+
+**Trigger:** say "mentor" or "what should I do next" or "am I ready for the next stage"
+
+**Also runs automatically:** at the start of every session
+
+**What it does:**
+- Reads your session memory and assignment list
+- Checks your understanding of the last thing you built (asks you to explain it)
+- Gives you the next concrete assignment with clear success criteria
+- Won't move you forward until you can explain what you just built
+
+**Use it:** at the start of every session, or whenever you're not sure what to do next.
+
+---
+
+### 7. Memory — save what happened this session
+
+**Trigger:** say "save memory" or "end session" or "we're done for today"
+
+**Also runs automatically:** at the end of every session
+
+**What it does:**
+- Reads your git log to see what was committed
+- Writes a structured entry to `.codex/memory/log.md`: what was built, what broke, what was fixed, decisions made, next task
+- Codex reads this log at the start of every future session — you never have to re-explain your project
+
+**Use it:** you don't have to — it runs automatically. But you can trigger it manually anytime.
+
+---
+
 ## Quick reference
 
 | You want to... | Say... |
@@ -118,5 +149,7 @@ You can also create your own skills. Add a new `.md` file to `.codex/skills/` wi
 | Fix something that's broken | "debug this" + paste the error |
 | Save your work | "commit this" |
 | Understand code | "explain this" |
+| Get your next assignment | "mentor" |
+| Save session memory | "save memory" (or just say goodbye — it runs automatically) |
 | Start the Codex App | Open the Codex App, select this folder |
 | Start the Codex CLI | `cd [project folder] && codex` |

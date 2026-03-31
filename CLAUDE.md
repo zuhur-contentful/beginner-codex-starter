@@ -1,5 +1,13 @@
 # CLAUDE.md
 
+## Session behaviour
+
+**On every session start:** read `.codex/memory/log.md` and `.codex/assignments.md`, then run the mentor skill — greet the learner with a one-sentence recap of last session and their next task.
+
+**On every session end:** run the memory skill — write a structured entry to `.codex/memory/log.md` covering what was built, what broke, decisions made, and next task.
+
+---
+
 ## Project Overview
 
 PROJECT_DESCRIPTION
