@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build with Codex — Beginner's Guide</title>
+<style>
+  :root {
+    --stage0: #6366f1;
+    --stage1: #0ea5e9;
+    --stage2: #10b981;
+    --stage3: #f59e0b;
+    --stage4: #ef4444;
+    --text: #1a1a2e;
+    --muted: #64748b;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --code-bg: #1e1e2e;
+    --code-text: #cdd6f4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    text-align: center;
+    padding: 60px 0 48px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: #6366f1;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cover p {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 24px;
+  }
+  .cover-meta {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── Section headers ── */
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 56px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 36px 0 12px;
+  }
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 24px 0 8px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  a { color: #6366f1; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  strong { font-weight: 700; }
+  em { font-style: italic; }
+
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+
+  /* ── Stage Journey Map ── */
+  .journey {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 32px 0 48px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .journey-stage {
+    flex: 1;
+    padding: 16px 14px;
+    text-align: center;
+    position: relative;
+  }
+  .journey-stage:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: white;
+    z-index: 2;
+    font-weight: 700;
+  }
+  .journey-stage.s0 { background: var(--stage0); }
+  .journey-stage.s1 { background: var(--stage1); }
+  .journey-stage.s2 { background: var(--stage2); }
+  .journey-stage.s3 { background: var(--stage3); }
+  .journey-stage.s4 { background: var(--stage4); }
+  .journey-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 4px;
+  }
+  .journey-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .journey-time {
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── Stage section headers ── */
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin: 48px 0 24px;
+    color: white;
+  }
+  .stage-header.s0 { background: var(--stage0); }
+  .stage-header.s1 { background: var(--stage1); }
+  .stage-header.s2 { background: var(--stage2); }
+  .stage-header.s3 { background: var(--stage3); }
+  .stage-header.s4 { background: var(--stage4); }
+  .stage-num {
+    font-size: 32px;
+    font-weight: 900;
+    opacity: 0.4;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .stage-info {}
+  .stage-info .stage-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    margin-bottom: 2px;
+  }
+  .stage-info h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    border: none;
+    padding: 0;
+    margin: 0 0 4px;
+  }
+  .stage-info .stage-goal {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .card-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .tag-when { background: #e0f2fe; color: #0369a1; }
+  .tag-time { background: #f0fdf4; color: #15803d; }
+  .tag-free { background: #fef9c3; color: #854d0e; }
+  .tag-official { background: #ede9fe; color: #5b21b6; }
+  .tag-apply { background: #fce7f3; color: #9d174d; }
+  .card-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .card-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6366f1;
+  }
+
+  /* ── Apply box ── */
+  .apply-box {
+    background: #fdf4ff;
+    border: 1.5px solid #d8b4fe;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+  .apply-box .apply-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7c3aed;
+    margin-bottom: 6px;
+  }
+  .apply-box p {
+    font-size: 14px;
+    color: #4c1d95;
+    margin: 0;
+  }
+
+  /* ── Skill chips ── */
+  .skill-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0 20px;
+    align-items: center;
+  }
+  .skill-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .skill-chip {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: #334155;
+  }
+
+  /* ── Code ── */
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+    font-size: 13px;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #be185d;
+  }
+  pre {
+    background: var(--code-bg);
+    border-radius: 10px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+  pre code {
+    background: none;
+    color: var(--code-text);
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* ── Callouts ── */
+  .callout {
+    border-left: 4px solid;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout-warn { border-color: #f59e0b; background: #fffbeb; color: #78350f; }
+  .callout-tip  { border-color: #10b981; background: #f0fdf4; color: #064e3b; }
+  .callout-info { border-color: #6366f1; background: #eef2ff; color: #312e81; }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  /* ── Mini project box ── */
+  .mini-project {
+    background: var(--code-bg);
+    color: #cdd6f4;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .mini-project .mp-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #a6e3a1;
+    margin-bottom: 8px;
+  }
+  .mini-project .mp-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .mini-project p {
+    font-size: 14px;
+    color: #bac2de;
+    margin: 0;
+  }
+
+  /* ── Tool comparison ── */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .tool-card {
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .tool-card.primary { border-color: #6366f1; background: #eef2ff; }
+  .tool-card-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .tool-card-desc { font-size: 13px; color: var(--muted); }
+  .tool-card-use { font-size: 12px; margin-top: 8px; font-weight: 600; color: #334155; }
+
+  /* ── Table ── */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { text-align: left; padding: 10px 12px; background: #f1f5f9; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 2px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ── Print ── */
+  @media print {
+    body { max-width: 100%; padding: 20px; }
+    .stage-header, .journey-stage, .mini-project { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2, h3, .stage-header { break-after: avoid; }
+    .card, .mini-project { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-badge">Beginner Guide</div>
+  <h1>Build with Codex</h1>
+  <p>Go from zero — no experience, no idea what a terminal is — to shipping a real AI-powered app. Step by step.</p>
+  <div class="cover-meta">Free · Uses ChatGPT Plus ($20/mo) · github.com/zuhur-contentful/beginner-codex-starter</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ WHAT IS THIS -->
+<h2>What you're going to build</h2>
+
+<p>By the end of this guide you will have built a real web app — something that runs in a browser, saves data, and uses AI. Something <em>you</em> want to use, not a tutorial project.</p>
+
+<p><strong>Examples of things beginners have built:</strong></p>
+<ul>
+  <li>A private journal that summarises your week using GPT</li>
+  <li>A habit tracker that sends you an encouraging message each morning</li>
+  <li>A reading list with AI-generated summaries of each book</li>
+  <li>A recipe organiser that suggests meals based on what's in the fridge</li>
+  <li>A tool that emails a daily digest of things you care about</li>
+</ul>
+
+<p>None of these require a computer science degree. All of them are buildable by someone who has never coded before.</p>
+
+<div class="callout callout-info">
+  <strong>The new rule with AI</strong>
+  You can now ask AI to set up your machine, plan your project, write the first version of every feature, explain every error, and review your code. Your job is to understand what it's doing — not to memorise syntax.
+</div>
+
+<!-- ══════════════════════════════════════════════════════ TOOLS -->
+<h2>Your tools</h2>
+
+<p>OpenAI makes several products. They're different and the naming is confusing. Here's what you need to know:</p>
+
+<div class="tool-grid">
+  <div class="tool-card">
+    <div class="tool-card-name">ChatGPT desktop app</div>
+    <div class="tool-card-desc">Chat interface. Lives in your dock. Cannot edit your files.</div>
+    <div class="tool-card-use">→ Use for: brainstorming, questions, planning, learning</div>
+  </div>
+  <div class="tool-card primary">
+    <div class="tool-card-name">Codex App ★ Start here</div>
+    <div class="tool-card-desc">GUI coding agent. Reads your files, writes code, runs commands, has Git built in.</div>
+    <div class="tool-card-use">→ Use for: actually building things</div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-card-name">Codex CLI</div>
+    <div class="tool-card-desc">Same as the Codex App but in your terminal. Keyboard-driven.</div>
+    <div class="tool-card-use">→ Use if: you prefer terminal over GUI</div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-card-name">VS Code + ChatGPT extension</div>
+    <div class="tool-card-desc">Chat panel inside your editor. Sees the file you're editing.</div>
+    <div class="tool-card-use">→ Use for: inline help without switching windows</div>
+  </div>
+</div>
+
+<div class="callout callout-warn">
+  <strong>ChatGPT is not deterministic</strong>
+  The same question can give a different answer each time. Great for brainstorming and learning. Never paste code you don't understand into your project — you won't be able to fix it when it breaks.
+</div>
+
+<p>You need a <strong>ChatGPT Plus subscription ($20/month)</strong> for all of these. The Codex App uses OAuth login — no extra API key needed to build with it.</p>
+
+<!-- ══════════════════════════════════════════════════════ JOURNEY MAP -->
+<h2>Your learning journey</h2>
+
+<div class="journey">
+  <div class="journey-stage s0">
+    <div class="journey-label">Stage 0</div>
+    <div class="journey-title">Understand &amp; Set Up</div>
+    <div class="journey-time">Day 1</div>
+  </div>
+  <div class="journey-stage s1">
+    <div class="journey-label">Stage 1</div>
+    <div class="journey-title">First Real App</div>
+    <div class="journey-time">Weeks 2–4</div>
+  </div>
+  <div class="journey-stage s2">
+    <div class="journey-label">Stage 2</div>
+    <div class="journey-title">Add AI</div>
+    <div class="journey-time">Weeks 5–8</div>
+  </div>
+  <div class="journey-stage s3">
+    <div class="journey-label">Stage 3</div>
+    <div class="journey-title">Ship It</div>
+    <div class="journey-time">Weeks 9–16</div>
+  </div>
+  <div class="journey-stage s4">
+    <div class="journey-label">Stage 4</div>
+    <div class="journey-title">Go Deep</div>
+    <div class="journey-time">After</div>
+  </div>
+</div>
+
+<p>Each stage below tells you exactly which training to do, when to do it, how to apply it, and which Codex skills to use.</p>
+
+<!-- ══════════════════════════════════════════════════════ STAGE 0 -->
+<div class="stage-header s0">
+  <div class="stage-num">0</div>
+  <div class="stage-info">
+    <div class="stage-label">Stage 0 · Day 1</div>
+    <h2>Understand Codex &amp; get set up</h2>
+    <div class="stage-goal">Goal: know what Codex is, have it installed, run your first AI-assisted script</div>
+  </div>
+</div>
+
+<p><strong>You are here if:</strong> you just found this and haven't written any code yet.</p>
+
+<h3>Official OpenAI Codex training — do these first</h3>
+<p>These are the official resources from OpenAI. Do them in this order.</p>
+
+<div class="card">
+  <div class="card-title">1. Codex for Builders — OpenAI Academy</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Before installing anything</span>
+    <span class="tag tag-time">20 min</span>
+    <span class="tag tag-official">Official OpenAI</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">The official overview. Explains what Codex is, all the surfaces (App, CLI, web, IDE extension), and how to get started. Start here so you know what you're installing and why.</div>
+  <a class="card-link" href="https://academy.openai.com/public/resources/codex-for-builders">academy.openai.com/public/resources/codex-for-builders →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">2. Codex Interactive Demo</div>
+  <div class="card-meta">
+    <span class="tag tag-when">After the Academy overview</span>
+    <span class="tag tag-time">15 min</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">See the Codex App, CLI, and code review workflow in action before installing anything. Watching it work first makes the install make sense.</div>
+  <a class="card-link" href="https://app.arcade.software/share/abDTLpR021CYRB4rETDH">Interactive demo →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">3. Using Codex with Your ChatGPT Plan</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When installing</span>
+    <span class="tag tag-time">10 min</span>
+    <span class="tag tag-official">Official OpenAI</span>
+  </div>
+  <div class="card-desc">Step-by-step sign-in instructions from OpenAI. Exactly how to connect your Plus account to the Codex App and CLI.</div>
+  <a class="card-link" href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan">help.openai.com →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">4. Codex 102 Workshop</div>
+  <div class="card-meta">
+    <span class="tag tag-when">After Codex is installed</span>
+    <span class="tag tag-time">1–2 hrs</span>
+    <span class="tag tag-official">Official OpenAI</span>
+    <span class="tag tag-apply">Hands-on</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">Hands-on, task-based workshop walking through real Codex development workflows. This is where you apply what you learned in the overview — you actually use Codex to do things.</div>
+  <a class="card-link" href="https://codex-102.vercel.app/preview">codex-102.vercel.app →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">5. How OpenAI Uses Codex (PDF)</div>
+  <div class="card-meta">
+    <span class="tag tag-when">After a few days of using Codex</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-official">Official OpenAI</span>
+  </div>
+  <div class="card-desc">Best-practice prompting patterns from inside OpenAI — how their own engineers use Codex day-to-day. Save this for after you've used Codex a few times; it'll make much more sense then.</div>
+  <a class="card-link" href="https://d2xo500swnpgl1.cloudfront.net/uploads/oaiacademy/-External-How-OpenAI-Uses-Codex-9f67ed43-34e8-4059-9960-e167b63ccf97-1754933207757.pdf">Download PDF →</a>
+</div>
+
+<div class="apply-box">
+  <div class="apply-label">Apply it</div>
+  <p>Open the Codex App → point it at an empty folder → type: <em>"Create a Python script that asks for my name and prints Hello, [name]"</em> → approve the change → run it. That's the full loop: describe, approve, run.</p>
+</div>
+
+<h3>Optional: Python foundation courses</h3>
+<p>If you want more context on Python before building, do one of these. Skip if you'd rather just start building and look things up as you go.</p>
+
+<div class="card">
+  <div class="card-title">Replit — AI Foundations: Master AI &amp; Vibe Coding</div>
+  <div class="card-meta">
+    <span class="tag tag-when">If you want a 30-min orientation</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-free">Free · Runs in browser</span>
+  </div>
+  <div class="card-desc">Explicitly built for vibe coding. Covers what AI coding is, how to build apps without traditional programming, and LLM basics. Runs entirely in Replit's browser IDE — nothing to install.</div>
+  <a class="card-link" href="https://learn.replit.com/">learn.replit.com →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">DeepLearning.AI — AI Python for Beginners</div>
+  <div class="card-meta">
+    <span class="tag tag-when">If you want a thorough foundation</span>
+    <span class="tag tag-time">~10 hrs</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">Python from absolute zero with AI assistance throughout. Taught by Andrew Ng. 35 video lessons, 27 code examples. The best free beginner AI Python course available.</div>
+  <a class="card-link" href="https://www.deeplearning.ai/short-courses/ai-python-for-beginners/">deeplearning.ai →</a>
+</div>
+
+<div class="callout callout-tip">
+  <strong>Bookmark this</strong>
+  Codex updates every few days. <a href="https://help.openai.com/en/articles/11428266-codex-changelog">Codex Changelog</a> — check it weekly to see what's new.
+</div>
+
+<div class="mini-project">
+  <div class="mp-label">Stage 0 mini project</div>
+  <div class="mp-title">Hello World with the Codex App</div>
+  <p>Open the Codex App → new project → empty folder → describe: "Create a Python script that prints my name and today's date" → review the proposed code → approve → open a terminal and run it. You just used a coding agent.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ STAGE 1 -->
+<div class="stage-header s1">
+  <div class="stage-num">1</div>
+  <div class="stage-info">
+    <div class="stage-label">Stage 1 · Weeks 2–4</div>
+    <h2>Build your first real app</h2>
+    <div class="stage-goal">Goal: a working web app with a database — input, save, display. No AI calls yet.</div>
+  </div>
+</div>
+
+<p><strong>You are here if:</strong> you've run Codex, understand what it does, and want to build something that actually runs in a browser.</p>
+
+<div class="skill-row">
+  <span class="skill-label">Codex skills to use:</span>
+  <span class="skill-chip">plan</span>
+  <span class="skill-chip">review</span>
+  <span class="skill-chip">commit</span>
+  <span class="skill-label" style="margin-left:4px; font-size:11px; font-style:italic">(say these words in the Codex App)</span>
+</div>
+
+<div class="card">
+  <div class="card-title">Python.org Tutorial — Chapters 1–3</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Before building anything</span>
+    <span class="tag tag-time">1 hr</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">Variables, strings, lists, functions. The absolute basics you'll see in every line of code you write. Don't do all of it — just chapters 1–3.</div>
+  <a class="card-link" href="https://docs.python.org/3/tutorial/">docs.python.org/3/tutorial →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">Git in 100 Seconds</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Before your first commit</span>
+    <span class="tag tag-time">2 min</span>
+    <span class="tag tag-free">Free · YouTube</span>
+  </div>
+  <div class="card-desc">Two minute video that explains what Git is and why every developer uses it. Watch before you commit anything for the first time.</div>
+  <a class="card-link" href="https://www.youtube.com/watch?v=hwP7WQkmECE">youtube.com →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">Flask Official Quickstart</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Before starting your first app</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">The official Flask docs show you how to build a web app in 30 lines. Read the whole thing before you start — it gives you the mental model for how Flask works.</div>
+  <a class="card-link" href="https://flask.palletsprojects.com/en/stable/quickstart/">flask.palletsprojects.com →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">CS50P — Weeks 1–3 (Harvard, free)</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Alongside building your first app</span>
+    <span class="tag tag-time">6 hrs</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">Functions, conditionals, loops, file I/O, exceptions. Do this in parallel with building — watch a lesson, then apply it in your project. Harvard's free Python course, excellent quality.</div>
+  <a class="card-link" href="https://cs50.harvard.edu/python/2022/">cs50.harvard.edu/python →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">SQLite Tutorial — Python section</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When adding data storage to your app</span>
+    <span class="tag tag-time">1 hr</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">How to save and load data from SQLite using Python. Read this when you hit the point where you need your app to remember things between page refreshes.</div>
+  <a class="card-link" href="https://www.sqlitetutorial.net/sqlite-python/">sqlitetutorial.net →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">Flask Mega-Tutorial — Parts 1–4</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Once your basic app is working</span>
+    <span class="tag tag-time">4 hrs</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">Forms, templates, user input, database models — the full picture of how a Flask app is structured. Read this once your basic app works and you want to understand the patterns properly.</div>
+  <a class="card-link" href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">miguelgrinberg.com →</a>
+</div>
+
+<div class="apply-box">
+  <div class="apply-label">Apply it — use your Codex skills</div>
+  <p>Open the Codex App in your project folder. Say <strong>"plan to-do list app"</strong> — it'll ask clarifying questions and write a plan before touching any code. After building each feature, say <strong>"review my code"</strong> — it'll explain what it did and flag anything to fix. Say <strong>"commit this"</strong> to save work safely.</p>
+</div>
+
+<div class="mini-project">
+  <div class="mp-label">Stage 1 mini project</div>
+  <div class="mp-title">To-Do List App</div>
+  <p>A web app at localhost:5000. Add items, mark them done, delete them. Data saved to SQLite so it persists when you restart. Built using the Codex App with the <code>plan</code> skill to define scope first.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ STAGE 2 -->
+<div class="stage-header s2">
+  <div class="stage-num">2</div>
+  <div class="stage-info">
+    <div class="stage-label">Stage 2 · Weeks 5–8</div>
+    <h2>Add AI to your app</h2>
+    <div class="stage-goal">Goal: your app makes a real AI call and shows the result to the user</div>
+  </div>
+</div>
+
+<p><strong>You are here if:</strong> you have a working app and want it to do something smart using GPT.</p>
+
+<div class="skill-row">
+  <span class="skill-label">Codex skills to use:</span>
+  <span class="skill-chip">debug</span>
+  <span class="skill-chip">learn</span>
+</div>
+
+<div class="callout callout-info">
+  <strong>API keys — use OpenRouter free tier first</strong>
+  To use Codex to <em>build</em> your app: OAuth login, no key needed. To make your <em>app itself</em> call AI: you need an API key. Start free at <a href="https://openrouter.ai">openrouter.ai</a> — no credit card, multiple capable models. Only pay when you've built something and hit the limits.
+</div>
+
+<div class="card">
+  <div class="card-title">DeepLearning.AI — Jupyter AI: AI Coding in Notebooks</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Before your first API call</span>
+    <span class="tag tag-time">~2 hrs</span>
+    <span class="tag tag-free">Free · Beginner level</span>
+  </div>
+  <div class="card-desc">AI-assisted coding, generating and explaining code, analysing data. Taught at beginner level. Gives you the mental model for how AI code generation works before you integrate it into your app.</div>
+  <a class="card-link" href="https://www.deeplearning.ai/short-courses/jupyter-ai-coding-in-notebooks/">deeplearning.ai →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">OpenAI Platform Quickstart</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When adding AI to your app</span>
+    <span class="tag tag-time">20 min</span>
+    <span class="tag tag-official">Official OpenAI</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">The official getting-started guide for your first API call in Python. Follow this when you're ready to wire up your first AI feature.</div>
+  <a class="card-link" href="https://platform.openai.com/docs/quickstart">platform.openai.com/docs/quickstart →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">OpenAI Prompt Engineering Guide</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Once your first API call works</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-official">Official OpenAI</span>
+  </div>
+  <div class="card-desc">How to write prompts that give consistent, reliable results. Read this once your first call works — it explains why some prompts work better than others and how to make your AI features predictable.</div>
+  <a class="card-link" href="https://platform.openai.com/docs/guides/prompt-engineering">platform.openai.com →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">OpenRouter — Free Models</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When choosing a model</span>
+    <span class="tag tag-time">10 min</span>
+    <span class="tag tag-free">Free tier available</span>
+  </div>
+  <div class="card-desc">Browse all the free models available on OpenRouter. Start here before paying for anything — several capable models are free. When you're ready to upgrade, switch to GPT-4o-mini or similar.</div>
+  <a class="card-link" href="https://openrouter.ai/models?order=top-weekly&supported_parameters=free">openrouter.ai/models →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">OpenAI Cookbook</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Reference while building</span>
+    <span class="tag tag-free">Free · GitHub</span>
+  </div>
+  <div class="card-desc">Real code examples for summarisation, Q&A, structured output, embeddings, and more. Use as a reference when you're trying to do something specific and want to see how others have done it.</div>
+  <a class="card-link" href="https://github.com/openai/openai-cookbook">github.com/openai/openai-cookbook →</a>
+</div>
+
+<div class="apply-box">
+  <div class="apply-label">Apply it — use your Codex skills</div>
+  <p>When an API call fails, say <strong>"debug this"</strong> and paste the error — Codex will read the code, form a hypothesis, and fix one thing at a time. When Codex writes a function that calls the API, say <strong>"explain this"</strong> — it'll walk through what the response object looks like and why the code is written that way.</p>
+</div>
+
+<div class="mini-project">
+  <div class="mp-label">Stage 2 mini project</div>
+  <div class="mp-title">AI-Powered Weekly Summary</div>
+  <p>Add a "summarise my week" button to your to-do app. It sends your completed tasks to GPT via OpenRouter (free tier) and displays a plain-English summary. Uses the <code>mistralai/mistral-7b-instruct:free</code> model to keep it free.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ STAGE 3 -->
+<div class="stage-header s3">
+  <div class="stage-num">3</div>
+  <div class="stage-info">
+    <div class="stage-label">Stage 3 · Weeks 9–16</div>
+    <h2>Ship a real product</h2>
+    <div class="stage-goal">Goal: something live on the internet with a real URL that you actually use</div>
+  </div>
+</div>
+
+<p><strong>You are here if:</strong> you have a working app with AI features and want it deployed, tested, and accessible from any device.</p>
+
+<div class="skill-row">
+  <span class="skill-label">Codex skills to use:</span>
+  <span class="skill-chip">plan</span>
+  <span class="skill-chip">review</span>
+  <span class="skill-chip">commit</span>
+  <span class="skill-label" style="margin-left:4px; font-size:11px; font-style:italic">(full loop on every feature)</span>
+</div>
+
+<div class="card">
+  <div class="card-title">Pytest — Getting Started</div>
+  <div class="card-meta">
+    <span class="tag tag-when">Before deploying anything</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">How to write tests so you know when you break something. Do this before deploying — CI is already set up in this repo and will run your tests automatically on every push.</div>
+  <a class="card-link" href="https://docs.pytest.org/en/stable/getting-started.html">docs.pytest.org →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">Render Deployment — Flask</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When you're ready to go live</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-free">Free tier</span>
+  </div>
+  <div class="card-desc">Deploy your Flask app to a real URL for free. Render's free tier gives you 750 hrs/month. Sign up with GitHub, connect your repo, set the start command, add your environment variables, and deploy.</div>
+  <a class="card-link" href="https://render.com/docs/deploy-flask">render.com/docs →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">GitHub Actions Quickstart</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When you deploy</span>
+    <span class="tag tag-time">20 min</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">This repo already has CI set up (.github/workflows/ci.yml). Read the quickstart to understand how it works and how to customise it as your project grows.</div>
+  <a class="card-link" href="https://docs.github.com/en/actions/writing-workflows/quickstart">docs.github.com →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">Supabase Python Quickstart</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When SQLite stops being enough</span>
+    <span class="tag tag-time">30 min</span>
+    <span class="tag tag-free">Free tier (500MB)</span>
+  </div>
+  <div class="card-desc">Upgrade from SQLite to a proper hosted PostgreSQL database. Free tier gives you 500MB. Do this when your app needs to be accessed by multiple people or from different devices.</div>
+  <a class="card-link" href="https://supabase.com/docs/guides/getting-started/quickstarts/python">supabase.com/docs →</a>
+</div>
+
+<div class="card">
+  <div class="card-title">FastAPI Official Tutorial</div>
+  <div class="card-meta">
+    <span class="tag tag-when">When you've outgrown Flask</span>
+    <span class="tag tag-time">3 hrs</span>
+    <span class="tag tag-free">Free</span>
+  </div>
+  <div class="card-desc">A better web framework for APIs — faster, automatic docs, type-safe. Switch to FastAPI when Flask starts feeling limiting or when you need better performance.</div>
+  <a class="card-link" href="https://fastapi.tiangolo.com/tutorial/">fastapi.tiangolo.com →</a>
+</div>
+
+<div class="mini-project">
+  <div class="mp-label">Stage 3 project</div>
+  <div class="mp-title">Your Real Project</div>
+  <p>Build something you actually need. Not a tutorial. Something real, deployed at a public URL, that you use. Tell one person about it. That's the goal.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ STAGE 4 -->
+<div class="stage-header s4">
+  <div class="stage-num">4</div>
+  <div class="stage-info">
+    <div class="stage-label">Stage 4 · After Week 16</div>
+    <h2>Go deeper</h2>
+    <div class="stage-goal">Goal: build more ambitious things — auth, search, agents, proper frontends</div>
+  </div>
+</div>
+
+<p>Come back to this when you've shipped something and want to do more.</p>
+
+<table>
+  <tr><th>When you want to…</th><th>Learn this</th><th>Resource</th></tr>
+  <tr><td>Let other people log in to your app</td><td>User authentication</td><td><a href="https://supabase.com/docs/guides/auth">Supabase Auth</a></td></tr>
+  <tr><td>Search by meaning, not just keywords</td><td>Vector embeddings (RAG)</td><td><a href="https://supabase.com/docs/guides/ai/vector-columns">Supabase pgvector</a></td></tr>
+  <tr><td>Handle more users at once</td><td>Async Python</td><td><a href="https://fastapi.tiangolo.com/async/">FastAPI async guide</a></td></tr>
+  <tr><td>Build a proper frontend UI</td><td>React</td><td><a href="https://react.dev/learn">React official tutorial</a></td></tr>
+  <tr><td>Deploy consistently across environments</td><td>Docker</td><td><a href="https://docs.docker.com/get-started/">Docker Getting Started</a></td></tr>
+  <tr><td>Build AI that takes multi-step actions</td><td>AI agents</td><td><a href="https://openai.github.io/openai-agents-python/">OpenAI Agents SDK</a></td></tr>
+  <tr><td>Get more out of Codex in production</td><td>Codex mastery</td><td><a href="https://developers.openai.com/codex">Codex Developers Hub</a></td></tr>
+</table>
+
+<!-- ══════════════════════════════════════════════════════ SKILLS -->
+<h2>Your pre-built Codex skills</h2>
+
+<p>This repo includes five skills in <code>.codex/skills/</code>. Say the trigger phrase in the Codex App and it will follow the instructions automatically.</p>
+
+<table>
+  <tr><th>Say this</th><th>Skill</th><th>What it does</th><th>Use it when</th></tr>
+  <tr>
+    <td><code>plan [feature]</code></td>
+    <td>Plan</td>
+    <td>Asks clarifying questions, scopes the smallest useful version, saves a plan file — no code until you confirm</td>
+    <td>Before every new feature</td>
+  </tr>
+  <tr>
+    <td><code>review my code</code></td>
+    <td>Review</td>
+    <td>Reads your git diff, flags security issues and bugs, explains every problem in plain English with the fix shown</td>
+    <td>After writing any code</td>
+  </tr>
+  <tr>
+    <td><code>debug this</code></td>
+    <td>Debug</td>
+    <td>One fix at a time, explains what caused the bug and why the fix works</td>
+    <td>When something is broken</td>
+  </tr>
+  <tr>
+    <td><code>commit this</code></td>
+    <td>Commit</td>
+    <td>Scans for secrets, shows the diff, writes a proper commit message, asks for confirmation</td>
+    <td>When saving work</td>
+  </tr>
+  <tr>
+    <td><code>explain this</code></td>
+    <td>Learn</td>
+    <td>Three levels: one sentence → line by line → why it's written that way</td>
+    <td>When you don't understand code</td>
+  </tr>
+</table>
+
+<div class="callout callout-tip">
+  <strong>The recommended workflow</strong>
+  <code>plan</code> → build → <code>explain this</code> → <code>review my code</code> → <code>commit this</code> → <code>git push</code>. Follow this loop for every feature and you'll rarely get stuck without knowing why.
+</div>
+
+<!-- ══════════════════════════════════════════════════════ WHEN IT BREAKS -->
+<h2>When things break</h2>
+
+<p>Every developer follows the same debugging loop. Get comfortable with it.</p>
+
+<ol>
+  <li>Read the <strong>full</strong> error message — the last line is usually the actual problem</li>
+  <li>Google the exact error message in quotes</li>
+  <li>Say <strong>"debug this"</strong> in the Codex App — paste the full error and describe what you were doing</li>
+  <li>Make <strong>one change at a time</strong></li>
+  <li>Run again and see what changed</li>
+  <li>Repeat</li>
+</ol>
+
+<h3>Common errors</h3>
+
+<table>
+  <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
+  <tr><td><code>ModuleNotFoundError: No module named 'flask'</code></td><td>Virtual env not active</td><td><code>source venv/bin/activate</code> then <code>pip install flask</code></td></tr>
+  <tr><td><code>KeyError: 'OPENROUTER_API_KEY'</code></td><td>.env missing or load_dotenv() not called</td><td><code>cp .env.example .env</code>, fill in values, add <code>load_dotenv()</code> at top of file</td></tr>
+  <tr><td><code>Address already in use</code></td><td>Port 5000 occupied</td><td><code>lsof -i :5000</code> then <code>kill &lt;PID&gt;</code></td></tr>
+  <tr><td><code>401 Unauthorized</code> from OpenRouter/OpenAI</td><td>Wrong or expired API key</td><td>Regenerate key at openrouter.ai or platform.openai.com</td></tr>
+  <tr><td><code>429 Too Many Requests</code></td><td>Hit rate limit</td><td>Wait; add <code>time.sleep(1)</code> between calls in loops</td></tr>
+  <tr><td>Flask blank 500 error</td><td>Exception hidden</td><td>Temporarily set <code>debug=True</code> to see the full traceback</td></tr>
+</table>
+
+<!-- ══════════════════════════════════════════════════════ QUICK REF -->
+<h2>Quick reference</h2>
+
+<pre><code># Activate virtual environment (run every time you open a new terminal)
+source venv/bin/activate
+
+# Install packages
+pip install &lt;package-name&gt;
+pip freeze > requirements.txt    # save so others can install too
+
+# Run your app
+python main.py
+
+# Run tests
+python -m pytest tests/ -v
+
+# Save your work
+git add &lt;specific files&gt;         # never: git add .
+git commit -m "feat: what you did"
+git push
+
+# Start Codex CLI (alternative to the App)
+codex</code></pre>
+
+<div style="margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); text-align: center;">
+  github.com/zuhur-contentful/beginner-codex-starter · Free to use and share · Open a browser and File → Print to save as PDF
+</div>
+
+</body>
+</html>
