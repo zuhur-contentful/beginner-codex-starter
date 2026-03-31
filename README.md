@@ -186,16 +186,16 @@ Same AI as the desktop app, in a browser tab. Same rules apply. Good for quick q
 
 #### Option C -- VS Code extension (add this once you're writing code daily)
 
-Install **GitHub Copilot** inside VS Code:
+Install the **ChatGPT extension** for VS Code -- made by OpenAI, same account you already have:
 ```
-VS Code -> Extensions (Ctrl+Shift+X) -> search "GitHub Copilot" -> Install
+VS Code -> Extensions (Ctrl+Shift+X) -> search "ChatGPT" -> install the one by OpenAI
 ```
 
-Sign in with your GitHub account. Open the chat with `Cmd+Shift+I` (Mac) or `Ctrl+Shift+I` (Windows).
+Once installed, you get a chat panel inside VS Code that can see the file you're currently editing. Ask it questions, paste errors, or ask it to explain highlighted code -- without switching to the desktop app.
 
-**What it adds:** AI suggestions as you type, and a chat panel that can see your current file. Great for inline help without switching windows.
+**What it adds:** AI help without leaving your editor. Great for "what does this function do" and "how do I add X to this file" while you're actively coding.
 
-> Tip: **Cursor** (`cursor.com`) is a VS Code fork with even deeper AI integration. Worth trying once you're comfortable.
+> Tip: **Cursor** (`cursor.com`) is a VS Code fork with even deeper AI built in -- worth switching to once you're comfortable with VS Code basics.
 
 ---
 
