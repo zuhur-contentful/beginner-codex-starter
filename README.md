@@ -641,116 +641,126 @@ git push
 
 ---
 
-## Part 6 -- Training Resources
+## Part 6 -- Learning Map
 
-Do these in order. Each stage maps to where you are in the guide.
-
----
-
-### Before anything else -- start here if you know nothing
-
-**Step 1: Official OpenAI Academy -- Codex for Builders (free)**
-
-This is the official OpenAI training for Codex. Start here.
-
-| Resource | What it is | Time |
-|----------|-----------|------|
-| [Codex for Builders -- OpenAI Academy](https://academy.openai.com/public/resources/codex-for-builders) | The official overview: what Codex is, where to use it, how to get started | 20 min |
-| [Codex 102 Workshop](https://codex-102.vercel.app/preview) | Hands-on, task-based training walking through real development workflows with Codex | 1-2 hrs |
-| [Codex Interactive Demo](https://app.arcade.software/share/abDTLpR021CYRB4rETDH) | See the CLI, IDE integration, and code review in action before you install anything | 15 min |
-| [How OpenAI Uses Codex (PDF)](https://d2xo500swnpgl1.cloudfront.net/uploads/oaiacademy/-External-How-OpenAI-Uses-Codex-9f67ed43-34e8-4059-9960-e167b63ccf97-1754933207757.pdf) | Best-practice prompting guide with real workflow examples from inside OpenAI | 30 min |
-| [Codex Docs](https://developers.openai.com/codex) | Official reference: capabilities, API, guides | Reference |
-
-Do the Academy page, the demo, and the workshop in that order. Skip the PDF until you've used Codex a few times -- it'll make more sense then.
-
-**Step 2: If you want a broader foundation first (zero coding experience)**
-
-| Course | What it covers | Time | Cost |
-|--------|---------------|------|------|
-| [Replit -- AI Foundations: Master AI & Vibe Coding](https://learn.replit.com/) | Vibe coding, building apps without traditional programming, LLM basics -- runs in browser, nothing to install | ~30 min | Free |
-| [DeepLearning.AI -- AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/) | Python fundamentals with AI assistance -- taught by Andrew Ng, 35 video lessons, zero experience needed | ~10 hrs | Free |
-
-**Replit** if you want something quick (30 min, no setup, browser-only).
-**DeepLearning.AI** if you want the most thorough beginner foundation available (10 hrs, the best free AI Python course).
+Every resource below is mapped to exactly where you are in your journey. Work through them in order within each stage -- don't skip ahead.
 
 ---
 
-### Stage 0 -- Set up your tools and have your first Codex session
-
-Goal: tools installed, Codex App running, first conversation done.
-
-| Resource | What it covers | Time |
-|----------|---------------|------|
-| [ChatGPT desktop app](https://openai.com/desktop) | Download -- your chat/brainstorming tool | 10 min |
-| [Codex App -- GitHub releases](https://github.com/openai/codex/releases) | Download -- the actual coding agent | 10 min |
-| [Using Codex with ChatGPT Plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan) | Step-by-step sign-in instructions from OpenAI | 10 min |
-| [Codex Changelog](https://help.openai.com/en/articles/11428266-codex-changelog) | Running log of new features -- bookmark this | Reference |
-| [CS50P -- Week 0 (Harvard, free)](https://cs50.harvard.edu/python/2022/weeks/0/) | First Python program, zero experience needed | 2 hrs |
-| [Python.org Tutorial -- Chapters 1-3](https://docs.python.org/3/tutorial/) | Variables, strings, numbers, functions | 1 hr |
-
-**Mini project:** Open the Codex App, point it at an empty folder, and say: "Create a Python script that asks for my name and prints Hello, [name]!" Approve the change, run it, see it work.
+```
+Stage 0  →  Stage 1  →  Stage 2  →  Stage 3  →  Stage 4
+  Day 1      Week 2-4    Week 5-8    Week 9-16    After
+  Setup      First app   Add AI      Ship it      Go deep
+```
 
 ---
 
-### Stage 1 -- First real app (weeks 2-4)
+### Stage 0 -- Day 1: understand Codex and get set up
 
-Goal: build something that runs in a browser and saves data.
+**You are here if:** you just found this repo and haven't written any code yet.
+**Goal:** understand what Codex is, install your tools, run your first AI-assisted script.
 
-| Resource | What it covers | Time |
-|----------|---------------|------|
-| [CS50P -- Weeks 1-3](https://cs50.harvard.edu/python/2022/) | Functions, conditionals, loops, exceptions | 6 hrs |
-| [Flask Official Quickstart](https://flask.palletsprojects.com/en/stable/quickstart/) | Build a web app in 30 lines | 30 min |
-| [Flask Mega-Tutorial -- Parts 1-4](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) | Forms, databases, templates | 4 hrs |
-| [SQLite Tutorial -- Python section](https://www.sqlitetutorial.net/sqlite-python/) | Save and retrieve data | 1 hr |
-| [Git in 100 Seconds (YouTube)](https://www.youtube.com/watch?v=hwP7WQkmECE) | How version control works | 2 min |
+**Do these first -- official OpenAI Codex training (all free):**
 
-**Mini project:** A to-do list app. Add items, check them off, delete them. Data saved to SQLite. Runs at `localhost:5000`.
+| Resource | What it teaches | Do it when | Time |
+|----------|----------------|-----------|------|
+| [Codex for Builders -- OpenAI Academy](https://academy.openai.com/public/resources/codex-for-builders) | What Codex is, all the surfaces (App, CLI, web, IDE), how to get started | Before installing anything | 20 min |
+| [Codex Interactive Demo](https://app.arcade.software/share/abDTLpR021CYRB4rETDH) | See the Codex App, CLI, and code review in action before you touch anything | After the Academy overview | 15 min |
+| [Using Codex with ChatGPT Plan](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan) | Sign-in walkthrough -- exactly how to log in with your Plus account | When installing | 10 min |
+| [Codex 102 Workshop](https://codex-102.vercel.app/preview) | Hands-on tasks walking through real Codex workflows | After you have Codex installed | 1-2 hrs |
+| [How OpenAI Uses Codex (PDF)](https://d2xo500swnpgl1.cloudfront.net/uploads/oaiacademy/-External-How-OpenAI-Uses-Codex-9f67ed43-34e8-4059-9960-e167b63ccf97-1754933207757.pdf) | Best-practice prompting patterns from inside OpenAI | After you've used Codex for a few days | 30 min |
 
----
+**Then -- if you want a Python foundation before building:**
 
-### Stage 2 -- Add AI to your app (weeks 5-8)
+| Resource | What it teaches | Do it when | Time |
+|----------|----------------|-----------|------|
+| [Replit -- AI Foundations: Vibe Coding](https://learn.replit.com/) | What vibe coding is, building apps with AI, no coding experience needed -- runs entirely in browser | If you want a 30-min orientation before anything else | 30 min |
+| [DeepLearning.AI -- AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/) | Python from zero with AI assistance -- Andrew Ng, 35 lessons, zero experience needed | If you want the most thorough foundation before writing code | 10 hrs |
+| [CS50P -- Week 0 (Harvard, free)](https://cs50.harvard.edu/python/2022/weeks/0/) | Your first Python program, explained step by step | After Replit, before Stage 1 | 2 hrs |
 
-Goal: make GPT do something useful inside an app you already built.
+**Tools to install at Stage 0:**
+- [ChatGPT desktop app](https://openai.com/desktop) -- your brainstorming and question-asking tool
+- [Codex App](https://github.com/openai/codex/releases) -- the coding agent that builds things
+- Python, Git, VS Code, Node.js, GitHub CLI -- ask ChatGPT desktop to walk you through it
 
-| Resource | What it covers | Time |
-|----------|---------------|------|
-| [DeepLearning.AI -- Jupyter AI: AI Coding in Notebooks](https://www.deeplearning.ai/short-courses/jupyter-ai-coding-in-notebooks/) | AI-assisted coding, generating and explaining code, analysing data -- beginner level, free | ~2 hrs |
-| [OpenAI Platform Quickstart](https://platform.openai.com/docs/quickstart) | Your first API call | 20 min |
-| [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) | How to write prompts that work reliably | 30 min |
-| [OpenAI Cookbook (GitHub)](https://github.com/openai/openai-cookbook) | Real code examples for common use cases | Reference |
-| [OpenAI Python SDK (PyPI)](https://pypi.org/project/openai/) | Install docs and changelog | Reference |
-| [Codex App + CLI README (GitHub)](https://github.com/openai/codex) | How the Codex agent works | 15 min |
+**Bookmark:** [Codex Changelog](https://help.openai.com/en/articles/11428266-codex-changelog) -- Codex updates frequently, check this weekly.
 
-**Mini project:** Add a "summarise my week" button to your to-do app. It sends your completed tasks to GPT and shows a plain-English summary.
-
----
-
-### Stage 3 -- Real product (weeks 9-16)
-
-Goal: build something you use every day. Deploy it. Write tests. Ship it.
-
-| Resource | What it covers | Time |
-|----------|---------------|------|
-| [FastAPI Official Tutorial](https://fastapi.tiangolo.com/tutorial/) | Better alternative to Flask for APIs | 3 hrs |
-| [Supabase Python Quickstart](https://supabase.com/docs/guides/getting-started/quickstarts/python) | Hosted PostgreSQL -- free tier | 30 min |
-| [Pytest -- Getting Started](https://docs.pytest.org/en/stable/getting-started.html) | Write tests properly | 30 min |
-| [Render Deployment -- Flask](https://render.com/docs/deploy-flask) | Put your app on the internet | 30 min |
-| [GitHub Actions Quickstart](https://docs.github.com/en/actions/writing-workflows/quickstart) | Run tests automatically on every push | 20 min |
-
-**Project:** Build something you actually need. Not a tutorial project. Something real. Deploy it. Tell someone about it.
+**Mini project:** Open the Codex App, point it at an empty folder, say: *"Create a Python script that asks for my name and prints Hello, [name]"* -- approve it, run it, see it work.
 
 ---
 
-### Stage 4 -- Going deeper (after week 16)
+### Stage 1 -- Weeks 2-4: build your first real app
 
-| Topic | Resource |
-|-------|----------|
-| User login / signup | [Supabase Auth Docs](https://supabase.com/docs/guides/auth) |
-| Search by meaning, not keywords | [Supabase pgvector guide](https://supabase.com/docs/guides/ai/vector-columns) |
-| Handle more users at once | [FastAPI async guide](https://fastapi.tiangolo.com/async/) |
-| Build a proper frontend | [React official tutorial](https://react.dev/learn) |
-| Package your app for deployment | [Docker Getting Started](https://docs.docker.com/get-started/) |
-| Build your own AI agents | [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) |
+**You are here if:** you've run Codex, understand what it does, and want to build something that runs in a browser.
+**Goal:** a working web app with a database. No AI calls yet -- just input, save, display.
+
+| Resource | What it teaches | Do it when | Time |
+|----------|----------------|-----------|------|
+| [Python.org Tutorial -- Chapters 1-3](https://docs.python.org/3/tutorial/) | Variables, strings, lists, functions -- the absolute basics | Before building anything | 1 hr |
+| [Git in 100 Seconds (YouTube)](https://www.youtube.com/watch?v=hwP7WQkmECE) | How Git and version control work | Before your first commit | 2 min |
+| [CS50P -- Weeks 1-3](https://cs50.harvard.edu/python/2022/) | Functions, conditionals, loops, file I/O, exceptions | Alongside building your first app | 6 hrs |
+| [Flask Official Quickstart](https://flask.palletsprojects.com/en/stable/quickstart/) | Build a web app in 30 lines -- read the whole thing | Before starting your app | 30 min |
+| [SQLite Tutorial -- Python section](https://www.sqlitetutorial.net/sqlite-python/) | Save and load data from a database | When you're adding data storage | 1 hr |
+| [Flask Mega-Tutorial -- Parts 1-4](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) | Forms, templates, user input, database models -- the full picture | Once your basic app works | 4 hrs |
+
+**Mini project:** A to-do list app. Add items, mark them done, delete them. Data saved to SQLite so it persists when you restart. Runs at `localhost:5000`.
+
+**Codex skill to use at this stage:** `plan` before starting, `review` after each feature, `commit` to save work.
+
+---
+
+### Stage 2 -- Weeks 5-8: add AI to your app
+
+**You are here if:** you have a working app and want to make it call GPT to do something smart.
+**Goal:** your app makes a real AI call and shows the result to the user.
+
+| Resource | What it teaches | Do it when | Time |
+|----------|----------------|-----------|------|
+| [DeepLearning.AI -- Jupyter AI: AI Coding in Notebooks](https://www.deeplearning.ai/short-courses/jupyter-ai-coding-in-notebooks/) | AI-assisted coding, generating and explaining code -- beginner level, free | Before your first API call | 2 hrs |
+| [OpenAI Platform Quickstart](https://platform.openai.com/docs/quickstart) | Your first API call in Python -- the official getting started guide | When adding AI to your app | 20 min |
+| [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) | How to write prompts that give consistent, reliable results | Once your first call works | 30 min |
+| [OpenRouter -- Free Models](https://openrouter.ai/models?order=top-weekly&supported_parameters=free) | Browse the free models available -- start here before paying for anything | When choosing which model to use | 10 min |
+| [OpenAI Cookbook (GitHub)](https://github.com/openai/openai-cookbook) | Real code examples for summarisation, Q&A, structured output, and more | As a reference while building | Reference |
+| [Codex App + CLI README](https://github.com/openai/codex) | How to use Codex to help you build and debug your AI features | Ongoing | Reference |
+
+**Mini project:** Add a "summarise my week" button to your to-do app -- sends completed tasks to GPT (via OpenRouter free tier) and shows a plain-English summary.
+
+**Codex skill to use at this stage:** `debug` when API calls fail, `learn` to understand what the response object looks like.
+
+---
+
+### Stage 3 -- Weeks 9-16: ship a real product
+
+**You are here if:** you've built something with AI and want to make it production-ready -- tested, deployed, accessible from any device.
+**Goal:** something live on the internet with a real URL that you actually use.
+
+| Resource | What it teaches | Do it when | Time |
+|----------|----------------|-----------|------|
+| [Pytest -- Getting Started](https://docs.pytest.org/en/stable/getting-started.html) | Write tests so you know when you break something | Before deploying anything | 30 min |
+| [Render Deployment -- Flask](https://render.com/docs/deploy-flask) | Put your Flask app on the internet for free | When you're ready to deploy | 30 min |
+| [GitHub Actions Quickstart](https://docs.github.com/en/actions/writing-workflows/quickstart) | Run tests automatically on every push -- CI is already set up in this repo | When you deploy | 20 min |
+| [Supabase Python Quickstart](https://supabase.com/docs/guides/getting-started/quickstarts/python) | Upgrade from SQLite to a proper hosted database -- free tier | When SQLite stops being enough | 30 min |
+| [FastAPI Official Tutorial](https://fastapi.tiangolo.com/tutorial/) | Better web framework than Flask for APIs -- faster, automatic docs, type-safe | When you've outgrown Flask | 3 hrs |
+
+**Project:** Build something you actually need. Not a tutorial. Something real, deployed, that you use. Tell one person about it.
+
+**Codex skill to use at this stage:** `review` before every PR, `commit` with good messages, full `plan → build → review → commit` loop.
+
+---
+
+### Stage 4 -- After week 16: go deeper
+
+**You are here if:** you've shipped something and want to build more ambitious things.
+
+| Topic | Why you'd need it | Resource |
+|-------|------------------|----------|
+| User login / accounts | Let other people use your app | [Supabase Auth](https://supabase.com/docs/guides/auth) |
+| Search by meaning, not just keywords | Find things in your app by concept | [Supabase pgvector](https://supabase.com/docs/guides/ai/vector-columns) |
+| Handle more users at once | Your app gets slow under load | [FastAPI async guide](https://fastapi.tiangolo.com/async/) |
+| Build a proper frontend | Your app needs a real UI | [React tutorial](https://react.dev/learn) |
+| Package your app | Consistent deploys across environments | [Docker Getting Started](https://docs.docker.com/get-started/) |
+| Build AI agents | Your app needs to take multi-step actions | [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) |
+| Deeper Codex mastery | Get the most out of Codex in production | [Codex Developers Hub](https://developers.openai.com/codex) |
 
 ---
 
