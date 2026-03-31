@@ -647,18 +647,33 @@ Do these in order. Each stage maps to where you are in the guide.
 
 ---
 
-### Stage 0 -- Absolute beginner (before you write any code)
+### Before anything else -- start here if you know nothing
 
-Goal: understand what you're getting into, set up your tools, have your first AI conversation.
+These two courses are specifically designed for people with zero coding experience who want to build with AI. Do at least one before moving to Stage 0.
+
+| Course | What it covers | Time | Cost |
+|--------|---------------|------|------|
+| [Replit -- AI Foundations: Master AI & Vibe Coding](https://learn.replit.com/) | Vibe coding, building apps without traditional programming, LLM basics -- runs inside Replit's browser IDE so nothing to install | ~30 min | Free |
+| [DeepLearning.AI -- AI Python for Beginners](https://www.deeplearning.ai/short-courses/ai-python-for-beginners/) | Python fundamentals with AI assistance, writing/testing/debugging code, building real AI applications -- taught by Andrew Ng, 35 video lessons | ~10 hrs | Free |
+
+**Replit first** if you want something quick and hands-on (30 min, runs in browser, no setup).
+**DeepLearning.AI** if you want a proper structured foundation before touching this repo (10 hrs, the best beginner AI Python course available).
+
+---
+
+### Stage 0 -- Set up your tools and have your first Codex session
+
+Goal: tools installed, Codex App running, first conversation done.
 
 | Resource | What it covers | Time |
 |----------|---------------|------|
-| [ChatGPT desktop app](https://openai.com/desktop) | Download and explore -- your primary tool | 30 min |
-| [OpenAI Help Centre -- Getting Started](https://help.openai.com/en/collections/3742473-chatgpt) | What ChatGPT can and can't do | 20 min |
+| [ChatGPT desktop app](https://openai.com/desktop) | Download -- your chat/brainstorming tool | 10 min |
+| [Codex App -- GitHub releases](https://github.com/openai/codex/releases) | Download -- the actual coding agent | 10 min |
+| [OpenAI Help Centre -- Getting Started](https://help.openai.com/en/collections/3742473-chatgpt) | What ChatGPT and Codex can and can't do | 20 min |
 | [CS50P -- Week 0 (Harvard, free)](https://cs50.harvard.edu/python/2022/weeks/0/) | First Python program, zero experience needed | 2 hrs |
 | [Python.org Tutorial -- Chapters 1-3](https://docs.python.org/3/tutorial/) | Variables, strings, numbers, functions | 1 hr |
 
-**Mini project:** Ask the desktop app to walk you through writing a Python script that prints "Hello, [your name]!" and runs it in your terminal.
+**Mini project:** Open the Codex App, point it at an empty folder, and say: "Create a Python script that asks for my name and prints Hello, [name]!" Approve the change, run it, see it work.
 
 ---
 
@@ -684,12 +699,12 @@ Goal: make GPT do something useful inside an app you already built.
 
 | Resource | What it covers | Time |
 |----------|---------------|------|
+| [DeepLearning.AI -- Jupyter AI: AI Coding in Notebooks](https://www.deeplearning.ai/short-courses/jupyter-ai-coding-in-notebooks/) | AI-assisted coding, generating and explaining code, analysing data -- beginner level, free | ~2 hrs |
 | [OpenAI Platform Quickstart](https://platform.openai.com/docs/quickstart) | Your first API call | 20 min |
-| [OpenAI API Reference -- Chat Completions](https://platform.openai.com/docs/api-reference/chat) | Full API docs | Reference |
 | [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) | How to write prompts that work reliably | 30 min |
 | [OpenAI Cookbook (GitHub)](https://github.com/openai/openai-cookbook) | Real code examples for common use cases | Reference |
 | [OpenAI Python SDK (PyPI)](https://pypi.org/project/openai/) | Install docs and changelog | Reference |
-| [Codex CLI README (GitHub)](https://github.com/openai/codex) | How the Codex CLI works | 15 min |
+| [Codex App + CLI README (GitHub)](https://github.com/openai/codex) | How the Codex agent works | 15 min |
 
 **Mini project:** Add a "summarise my week" button to your to-do app. It sends your completed tasks to GPT and shows a plain-English summary.
 
@@ -756,7 +771,7 @@ Goal: build something you use every day. Deploy it. Write tests. Ship it.
 which python   # should point to venv/bin/python
 
 # Are your env vars loaded?
-python3 -c "from dotenv import load_dotenv; import os; load_dotenv(); print(os.environ.get('OPENAI_API_KEY', 'NOT SET'))"
+python3 -c "from dotenv import load_dotenv; import os; load_dotenv(); print(os.environ.get('OPENROUTER_API_KEY', 'NOT SET'))"
 
 # Are packages installed?
 pip list | grep flask
