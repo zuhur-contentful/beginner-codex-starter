@@ -277,22 +277,33 @@ Write these down. You'll put them in `CLAUDE.md` next.
 
 ---
 
-### Step 2.2 -- Set up your project
+### Step 2.2 -- Get the template onto your computer
+
+**If you're completely new to Git (easiest way):**
+
+1. Go to [github.com/zuhur-contentful/beginner-codex-starter](https://github.com/zuhur-contentful/beginner-codex-starter)
+2. Click the green **Use this template** button → **Create a new repository**
+3. Give it a name (something like `my-first-app`) → click **Create repository**
+4. On your new repo page, click the green **Code** button → **Download ZIP**
+5. Unzip the file — you now have a project folder on your computer
+6. Open that folder in the Codex App
+
+**If you have Git installed:**
 
 ```bash
-# Clone this template
-git clone https://github.com/zuhur-contentful/beginner-codex-starter ~/projects/my-first-app
-cd ~/projects/my-first-app
+git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
+cd YOUR-REPO
+```
 
+Then:
+
+```bash
 # Copy the secrets template
 cp .env.example .env
 
 # Wire up the pre-commit hook (stops you committing secrets)
 git config core.hooksPath .githooks
 chmod +x .githooks/pre-commit
-
-# Create your own GitHub repo
-gh repo create my-first-app --public --source=. --push
 ```
 
 Open in VS Code:
