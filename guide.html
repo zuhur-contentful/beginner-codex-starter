@@ -439,77 +439,86 @@
 
   <p><strong>You are here if:</strong> you just found this and have no coding experience at all.</p>
 
-  <div class="callout callout-warn">
-    <strong>Don't start with the OpenAI Academy or Codex 102 yet</strong>
-    Those assume you already know Git, the terminal, and how to read code. Do Stage 0 first — by Stage 1 you'll have enough context to get value from them.
+  <div class="callout callout-info">
+    <strong>You do not need to learn to code before starting</strong>
+    Codex writes the code. Your job is to describe what you want, read what it proposes, and say "explain this" if anything's unclear. You will pick up how code works naturally as you build — you don't need to study it first.
   </div>
 
-  <h3>Step 1 — Understand what vibe coding is</h3>
-  <p>Genuinely zero-experience. Nothing to install. Just open in a browser.</p>
+  <h3>Step 1 — Understand what vibe coding is (30 min)</h3>
+  <p>Nothing to install. Open in a browser right now.</p>
 
   <div class="card">
     <div class="card-title">Replit — AI Foundations: Master AI &amp; Vibe Coding</div>
     <div class="card-meta">
-      <span class="tag tag-when">Absolute first thing</span>
+      <span class="tag tag-when">Do this first — nothing to install</span>
       <span class="tag tag-time">30 min</span>
-      <span class="tag tag-free">Free · Runs in browser · Zero experience needed</span>
+      <span class="tag tag-free">Free · Runs in browser</span>
     </div>
-    <div class="card-desc">The only course explicitly built for vibe coding. Explains what AI coding is, how to build apps without traditional programming, and what LLMs actually do. No install, no setup.</div>
+    <div class="card-desc">Explains what AI coding is, how to describe what you want to an AI agent, and what happens when you do. The mental model you need before opening Codex for the first time. No setup, runs entirely in the browser.</div>
     <a class="card-link" href="https://learn.replit.com/">learn.replit.com →</a>
+  </div>
+
+  <h3>Step 2 — Install your tools (let AI do it)</h3>
+  <p>Open the <strong>ChatGPT desktop app</strong> and paste this exactly:</p>
+  <pre><code>I'm a complete beginner on a Mac. I need to install:
+Python 3.12, Git, VS Code, Node.js, and the GitHub CLI.
+Walk me through it one step at a time.
+Don't give me the next step until I tell you the previous one worked.</code></pre>
+
+  <div class="card">
+    <div class="card-title">Using Codex with Your ChatGPT Plan</div>
+    <div class="card-meta">
+      <span class="tag tag-when">When downloading the Codex App</span>
+      <span class="tag tag-time">10 min</span>
+      <span class="tag tag-official">Official OpenAI</span>
+    </div>
+    <div class="card-desc">Official walkthrough for connecting your ChatGPT Plus account to the Codex App. Follow this after downloading from github.com/openai/codex/releases.</div>
+    <a class="card-link" href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan">help.openai.com →</a>
+  </div>
+
+  <h3>Step 3 — Your first Codex session</h3>
+  <p>Open the Codex App → click <strong>Open folder</strong> → select this repo folder → type:</p>
+  <pre><code>Create a Python script that asks for my name and prints Hello, [name]</code></pre>
+  <p>Codex will write the code. Read it. If anything's unclear, say <strong>"explain this line by line"</strong> — it'll walk through every line in plain English. Then approve and run it.</p>
+
+  <div class="callout callout-tip">
+    <strong>This is the whole loop — you'll use it forever</strong>
+    Describe what you want → Codex writes it → say "explain this" for anything unclear → approve → run → repeat. You never need to memorise syntax. You just need to understand what the code is doing.
+  </div>
+
+  <div class="callout callout-warn">
+    <strong>Don't start the OpenAI Academy or Codex 102 Workshop yet</strong>
+    Those assume you already know Git, the terminal, and how to read code. Come back to them at the end of Stage 1 — by then they'll make sense.
+  </div>
+
+  <h4>Optional — if you want to understand Python more deeply</h4>
+
+  <div class="card">
+    <div class="card-title">CS50P — Week 0 (Harvard, free)</div>
+    <div class="card-meta">
+      <span class="tag tag-when">Optional — only if curious about how Python works</span>
+      <span class="tag tag-time">2 hrs</span>
+      <span class="tag tag-free">Free</span>
+    </div>
+    <div class="card-desc">Functions, variables, strings, input/output — the exact things you'll see in every line Codex writes. Watch it if you want to understand <em>why</em> code looks the way it does. Not required to build.</div>
+    <a class="card-link" href="https://cs50.harvard.edu/python/2022/weeks/0/">cs50.harvard.edu/python →</a>
   </div>
 
   <div class="card">
     <div class="card-title">DeepLearning.AI — AI Python for Beginners</div>
     <div class="card-meta">
-      <span class="tag tag-when">If you want a fuller foundation first</span>
-      <span class="tag tag-time">~10 hrs</span>
-      <span class="tag tag-free">Free · Zero experience needed</span>
+      <span class="tag tag-when">Optional — fuller foundation if you want it</span>
+      <span class="tag tag-time">~10 hrs (do Week 1 only to start)</span>
+      <span class="tag tag-free">Free</span>
     </div>
-    <div class="card-desc">Python from absolute zero, with AI assistance throughout. Taught by Andrew Ng. 35 video lessons. The best free beginner AI-assisted Python course available. Do this alongside Stage 1 if you want to understand Python as you build.</div>
+    <div class="card-desc">Python from zero, with AI assistance throughout. Taught by Andrew Ng. Do this <em>alongside</em> building — not instead of it. Watch a lesson, then apply what you saw in your project.</div>
     <a class="card-link" href="https://www.deeplearning.ai/short-courses/ai-python-for-beginners/">deeplearning.ai →</a>
   </div>
 
-  <h3>Step 2 — Install your tools</h3>
-  <p>Open the ChatGPT desktop app and say: <em>"I'm a complete beginner. Walk me through installing Python 3.12, Git, VS Code, Node.js, and the GitHub CLI on my Mac. One step at a time."</em></p>
-
-  <div class="card">
-    <div class="card-title">Using Codex with Your ChatGPT Plan</div>
-    <div class="card-meta">
-      <span class="tag tag-when">When installing the Codex App</span>
-      <span class="tag tag-time">10 min</span>
-      <span class="tag tag-official">Official OpenAI</span>
-    </div>
-    <div class="card-desc">The official sign-in walkthrough. How to connect your ChatGPT Plus account to the Codex App. Follow when you download the Codex App from github.com/openai/codex/releases.</div>
-    <a class="card-link" href="https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan">help.openai.com →</a>
-  </div>
-
-  <h3>Step 3 — Learn basic Python</h3>
-
-  <div class="card">
-    <div class="card-title">CS50P — Week 0 (Harvard, free)</div>
-    <div class="card-meta">
-      <span class="tag tag-when">After Replit course, before building</span>
-      <span class="tag tag-time">2 hrs</span>
-      <span class="tag tag-free">Free</span>
-    </div>
-    <div class="card-desc">Covers functions, variables, strings, and basic input/output — the exact concepts you'll see in every line Codex writes. Doing this means you can read what Codex proposes instead of blindly approving it.</div>
-    <a class="card-link" href="https://cs50.harvard.edu/python/2022/weeks/0/">cs50.harvard.edu/python →</a>
-  </div>
-
-  <div class="apply-box">
-    <div class="apply-label">Apply it — your first Codex session</div>
-    <p>Open the Codex App → open your project folder → type: <em>"Create a Python script that asks for my name and prints Hello, [name]"</em> → read the code it proposes → approve → run it in the terminal.</p>
-  </div>
-
-  <div class="callout callout-tip">
-    <strong>Bookmark for later</strong>
-    <a href="https://help.openai.com/en/articles/11428266-codex-changelog">Codex Changelog</a> — Codex updates frequently. Check it weekly once you're actively building.
-  </div>
-
   <div class="mini-project">
-    <div class="mp-label">Stage 0 mini project</div>
-    <div class="mp-title">Hello World — understood, not just run</div>
-    <p>Use the Codex App to create a Python script that asks your name and prints a greeting. Then open the file and make sure you can explain every line. Say "explain this line by line" if anything's unclear. Don't advance until you can read it.</p>
+    <div class="mp-label">Stage 0 milestone</div>
+    <div class="mp-title">Hello World — described, built, and understood</div>
+    <p>You described what you wanted in plain English. Codex wrote it. You ran it. You can explain every line. You didn't write a single character of code yourself. That's the point.</p>
   </div>
 
   <button class="next-btn to-s1" onclick="switchTab('s1')">Ready for Stage 1 — Build your first app →</button>
@@ -548,20 +557,20 @@
   </div>
 
   <div class="callout callout-tip">
-    <strong>Say "let's build the to-do app" in the Codex App</strong>
-    The first-build skill will walk you through the whole thing step by step — planning, building, reviewing, and committing — while teaching you the coding agent workflow at the same time.
+    <strong>Start here: say "let's build the to-do app" in the Codex App</strong>
+    The first-build skill walks you through the whole thing — Codex plans it, writes every file, explains what it did, and commits the work. You describe, it builds. That's the entire loop.
   </div>
 
-  <div class="card">
-    <div class="card-title">Python.org Tutorial — Chapters 1–3</div>
-    <div class="card-meta">
-      <span class="tag tag-when">Before building anything</span>
-      <span class="tag tag-time">1 hr</span>
-      <span class="tag tag-free">Free</span>
-    </div>
-    <div class="card-desc">Variables, strings, lists, functions. The absolute basics you'll see in every line of code. Just chapters 1–3.</div>
-    <a class="card-link" href="https://docs.python.org/3/tutorial/">docs.python.org/3/tutorial →</a>
+  <div class="callout callout-info">
+    <strong>You still don't need to write code</strong>
+    At every step, Codex writes the code. You read it, say "explain this" if anything's unclear, approve, and move on. The goal is to understand what's being built — not to write it yourself.
   </div>
+
+  <h3>What Codex is building for you</h3>
+  <p>A to-do app that runs at <code>localhost:5000</code> in your browser. You can add items, mark them done, delete them, and they persist when you restart the app. It uses Flask (the web framework) and SQLite (the database). You don't need to know either of those — Codex handles all of it.</p>
+
+  <h3>Things worth understanding as you go</h3>
+  <p>You don't need to read these before starting. Come back to them when Codex writes something you want to understand better.</p>
 
   <div class="card">
     <div class="card-title">Git in 100 Seconds</div>
@@ -570,56 +579,45 @@
       <span class="tag tag-time">2 min</span>
       <span class="tag tag-free">Free · YouTube</span>
     </div>
-    <div class="card-desc">Two minute video explaining what Git is and why every developer uses it. Watch before you commit anything for the first time.</div>
+    <div class="card-desc">What Git is and why it exists — in two minutes. Watch this before the first time you save your work.</div>
     <a class="card-link" href="https://www.youtube.com/watch?v=hwP7WQkmECE">youtube.com →</a>
   </div>
 
   <div class="card">
     <div class="card-title">Flask Official Quickstart</div>
     <div class="card-meta">
-      <span class="tag tag-when">Before starting your first app</span>
+      <span class="tag tag-when">When Codex writes Flask code and you want to understand it</span>
       <span class="tag tag-time">30 min</span>
       <span class="tag tag-free">Free</span>
     </div>
-    <div class="card-desc">How to build a web app in 30 lines. Read the whole thing before you start — gives you the mental model for how Flask works.</div>
+    <div class="card-desc">Explains how Flask works — routes, templates, requests. Read this when Codex has written a few Flask files and you want to understand the pattern, not just approve it.</div>
     <a class="card-link" href="https://flask.palletsprojects.com/en/stable/quickstart/">flask.palletsprojects.com →</a>
-  </div>
-
-  <div class="card">
-    <div class="card-title">CS50P — Weeks 1–3 (Harvard, free)</div>
-    <div class="card-meta">
-      <span class="tag tag-when">Alongside building your first app</span>
-      <span class="tag tag-time">6 hrs</span>
-      <span class="tag tag-free">Free</span>
-    </div>
-    <div class="card-desc">Functions, conditionals, loops, file I/O, exceptions. Watch a lesson, then apply it in your project. Harvard's free Python course, excellent quality.</div>
-    <a class="card-link" href="https://cs50.harvard.edu/python/2022/">cs50.harvard.edu/python →</a>
   </div>
 
   <div class="card">
     <div class="card-title">SQLite Tutorial — Python section</div>
     <div class="card-meta">
-      <span class="tag tag-when">When adding data storage</span>
+      <span class="tag tag-when">When Codex adds a database and you want to understand it</span>
       <span class="tag tag-time">1 hr</span>
       <span class="tag tag-free">Free</span>
     </div>
-    <div class="card-desc">How to save and load data from SQLite using Python. Read this when your app needs to remember things between page refreshes.</div>
+    <div class="card-desc">How SQLite saves data between page refreshes. Read this once Codex has written database code and you want to understand what it's actually doing.</div>
     <a class="card-link" href="https://www.sqlitetutorial.net/sqlite-python/">sqlitetutorial.net →</a>
   </div>
 
   <div class="card">
-    <div class="card-title">Flask Mega-Tutorial — Parts 1–4</div>
+    <div class="card-title">CS50P — Weeks 1–3 (Harvard, free)</div>
     <div class="card-meta">
-      <span class="tag tag-when">Once your basic app is working</span>
-      <span class="tag tag-time">4 hrs</span>
+      <span class="tag tag-when">Optional — if you want to understand Python more deeply</span>
+      <span class="tag tag-time">6 hrs</span>
       <span class="tag tag-free">Free</span>
     </div>
-    <div class="card-desc">Forms, templates, user input, database models — the full picture of how a Flask app is structured. Read once your basic app works and you want to understand the patterns properly.</div>
-    <a class="card-link" href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">miguelgrinberg.com →</a>
+    <div class="card-desc">Functions, loops, file I/O. Watch a lesson, then look at what Codex wrote and see if you can spot those patterns. Harvard's free Python course — excellent quality. Optional, not required.</div>
+    <a class="card-link" href="https://cs50.harvard.edu/python/2022/">cs50.harvard.edu/python →</a>
   </div>
 
-  <h3>Now the official Codex training makes sense</h3>
-  <p>You've built a working app. You know what Git is, what the terminal does, and what a Python function looks like. This is exactly what the official OpenAI training assumes.</p>
+  <h3>Once your app is working — the official Codex training</h3>
+  <p>After the to-do app runs, you'll know what Git is, what the terminal does, and what a Python function looks like. That's exactly what these assume:</p>
 
   <div class="card">
     <div class="card-title">Codex for Builders — OpenAI Academy</div>
@@ -658,14 +656,14 @@
   </div>
 
   <div class="apply-box">
-    <div class="apply-label">Apply it — use your Codex skills</div>
-    <p>Say <strong>"plan to-do list app"</strong> — Codex asks clarifying questions and writes a plan before touching any code. After each feature, say <strong>"review my code"</strong>. Say <strong>"commit this"</strong> to save safely.</p>
+    <div class="apply-label">The loop — do this for every feature</div>
+    <p>Say <strong>"plan to-do list app"</strong> → Codex asks questions and writes a plan, no code yet → confirm → Codex builds it → say <strong>"explain this"</strong> for anything unclear → say <strong>"review my code"</strong> → say <strong>"commit this"</strong> to save. Repeat for every feature.</p>
   </div>
 
   <div class="mini-project">
-    <div class="mp-label">Stage 1 mini project</div>
-    <div class="mp-title">To-Do List App</div>
-    <p>A web app at localhost:5000. Add items, mark done, delete. Data saved to SQLite so it persists when you restart. Built with the <code>plan</code> skill to define scope first.</p>
+    <div class="mp-label">Stage 1 milestone</div>
+    <div class="mp-title">A working to-do app — described, not coded</div>
+    <p>You described what you wanted. Codex built it. You can explain what each file does. You used plan, review, and commit. You wrote zero code from scratch.</p>
   </div>
 
   <button class="next-btn to-s2" onclick="switchTab('s2')">Ready for Stage 2 — Add AI →</button>
@@ -692,7 +690,7 @@
     </div>
   </div>
 
-  <p><strong>You are here if:</strong> you have a working app and want it to do something smart using GPT.</p>
+  <p><strong>You are here if:</strong> you have a working to-do app and want it to do something smart — like summarise your week using GPT.</p>
 
   <div class="skill-row">
     <span class="skill-label">Codex skills to use:</span>
@@ -701,8 +699,9 @@
   </div>
 
   <div class="callout callout-info">
-    <strong>API keys — use OpenRouter free tier first</strong>
-    To use Codex to <em>build</em>: OAuth login, no key needed. To make your <em>app itself</em> call AI: you need a key. Start free at <a href="https://openrouter.ai">openrouter.ai</a> — no credit card. Only pay once you've built something and hit the limits.
+    <strong>There are two different things here — don't confuse them</strong>
+    <strong>Building with Codex:</strong> OAuth login, no key needed. That's what you've been doing.<br>
+    <strong>Your app calling AI:</strong> that needs a key. Go to <a href="https://openrouter.ai">openrouter.ai</a>, sign up free (no credit card), copy your key into <code>.env</code>. Codex will wire up the rest — just say "add an AI feature that [describes what you want]."
   </div>
 
   <div class="card">
@@ -773,8 +772,8 @@
   </div>
 
   <div class="apply-box">
-    <div class="apply-label">Apply it — use your Codex skills</div>
-    <p>When an API call fails, say <strong>"debug this"</strong> and paste the error. When Codex writes an API function, say <strong>"explain this"</strong> — it'll walk through what the response object looks like and why the code is written that way.</p>
+    <div class="apply-label">How to add AI to your app</div>
+    <p>Say: <strong>"Add a button that summarises my completed tasks using AI."</strong> Codex will write every file it needs to touch — the route, the API call, the template update. If it fails, say <strong>"debug this"</strong> and paste the full error. Say <strong>"explain this"</strong> after any AI code to understand what the response object looks like.</p>
   </div>
 
   <div class="mini-project">
